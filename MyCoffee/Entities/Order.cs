@@ -6,7 +6,7 @@ namespace MyCoffee.Entities
 {
     public class Order
     {
-        public int Id { get; set; }
+        public int Id { get; }
         public int CustomerId { get; set; }
         private float TotalPrice { get; }
 
