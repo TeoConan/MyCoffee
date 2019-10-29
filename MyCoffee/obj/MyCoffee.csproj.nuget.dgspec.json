@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\MDSB3\\C#\\workspace\\MyCoffee\\MyCoffee\\MyCoffee.csproj": {}
+    "C:\\C#\\MyCoffee\\MyCoffee\\MyCoffee.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\MDSB3\\C#\\workspace\\MyCoffee\\MyCoffee\\MyCoffee.csproj": {
+    "C:\\C#\\MyCoffee\\MyCoffee\\MyCoffee.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\MDSB3\\C#\\workspace\\MyCoffee\\MyCoffee\\MyCoffee.csproj",
+        "projectUniqueName": "C:\\C#\\MyCoffee\\MyCoffee\\MyCoffee.csproj",
         "projectName": "MyCoffee",
-        "projectPath": "D:\\Documents\\MDSB3\\C#\\workspace\\MyCoffee\\MyCoffee\\MyCoffee.csproj",
-        "packagesPath": "C:\\Users\\teoco\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\MDSB3\\C#\\workspace\\MyCoffee\\MyCoffee\\obj\\",
+        "projectPath": "C:\\C#\\MyCoffee\\MyCoffee\\MyCoffee.csproj",
+        "packagesPath": "C:\\Users\\eva31\\.nuget\\packages\\",
+        "outputPath": "C:\\C#\\MyCoffee\\MyCoffee\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\teoco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eva31\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
