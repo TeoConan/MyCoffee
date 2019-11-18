@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,6 +53,10 @@ namespace MyCoffee.Data
                     break;
 
                 case "5":
+                    WaitCommandListByCategory();
+                    break;
+
+                case "6":
                     break;
 
                 default:
@@ -63,11 +67,13 @@ namespace MyCoffee.Data
 
         public void Summary()
         {
+            Console.Clear();
             echo("1) Documentation");
             echo("2) Lister les produits");
             echo("3) Passer une commande");
             echo("4) Voir les dates courtes");
-            echo("5) Quitter");
+            echo("5) Lister par catégorie");
+            echo("6) Quitter");
         }
 
         public void SortShortDates()
@@ -86,12 +92,63 @@ namespace MyCoffee.Data
             var mockProductRepository = new MockProductRepository();
 
             var products = mockProductRepository.getAllProducts();
-            Console.WriteLine("List des produits : \n");
+            Console.WriteLine("Liste des produits : \n");
 
             foreach (Product product in products)
             {
                 Console.WriteLine(product.Name + "\n");
             }
+
+            ReturnToWaitingCommand();
+        }
+
+        public void WaitCommandListByCategory()
+        {
+            Console.Clear();
+            echo("1) Sandwich");
+            echo("2) Viennoiserie\n");
+
+            echo("Veuillez entrer une commande");
+            input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1":
+                    ListByCategory(2, "Sandwiches");
+                    break;
+                case "2":
+                    ListByCategory(1, "Viennoiseries");
+                    break;
+                default:
+                    WaitCommandListByCategory();
+                    break;
+
+            }
+        }
+
+        public void ListByCategory(int categoryId, string category)
+        {
+            Console.Clear();
+            var mockProductRepository = new MockProductRepository();
+
+            var products = mockProductRepository.getProductsByCategory(categoryId);
+            Console.WriteLine("Liste des produits de la catégorie : " + category + "\n" );
+
+            foreach (Product product in products)
+            {
+                Console.WriteLine(product.Name + "\n");
+            }
+
+            ReturnToWaitingCommand();
+        }
+
+        public void ReturnToWaitingCommand()
+        {
+            Console.WriteLine("Appuyez sur une touche pour revenir au menu.\n");
+
+            Console.ReadKey();
+            Summary();
+            WaitCommand();
         }
 
 
