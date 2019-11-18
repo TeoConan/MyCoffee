@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyCoffee.Entities
 {
-    public class Order
+    public class CustomerOrder
     {
         public int Id { get; }
         public int CustomerId { get; set; }
