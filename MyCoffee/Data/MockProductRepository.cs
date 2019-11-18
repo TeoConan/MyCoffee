@@ -20,22 +20,42 @@ namespace MyCoffee.Data
 
         public IEnumerable<Product> getAllProducts()
         {
-            return null;
+            if (_products == null)
+            {
+                throw new Exception("Aucun produit trouvé");
+            }
+            return _products;
         }
 
         public IEnumerable<Product> getProductsByCategory(int categoryId)
         {
-            return null;
+
+            var products = _products.FindAll((product) => product.CategoryId == categoryId);
+            if (products == null)
+            {
+                throw new Exception("Aucun produit trouvé");
+            }
+            return products;
         }
 
         public Product getProductByName(string name)
         {
-            throw new NotImplementedException();
+            var product = _products.First((product) => product.Name.Contains(name));
+            if (product == null)
+            {
+                throw new Exception("Aucun produit trouvé");
+            }
+            return product;
         }
 
         public Product getProductByid(int id)
         {
-            throw new NotImplementedException();
+            var product = _products.First((product) => product.Id == id);
+            if (product == null)
+            {
+                throw new Exception("Aucun produit trouvé");
+            }
+            return product;
         }
     }
 }
