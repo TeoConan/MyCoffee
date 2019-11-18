@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MyCoffee.Entities;
 
 namespace MyCoffee.Data
 {
@@ -81,7 +82,15 @@ namespace MyCoffee.Data
 
         public void ListProduct()
         {
+            var mockProductRepository = new MockProductRepository();
 
+            var products = mockProductRepository.getAllProducts();
+            Console.WriteLine("List des produits : \n");
+
+            foreach (Product product in products)
+            {
+                Console.WriteLine(product.Name + "\n");
+            }
         }
 
 
