@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MyCoffee.Entities
 {
-    public class Customer
+    class Product
     {
-        public Customer()
-        {
-            //Orders = new List<Order>();
-        }
-
-        public int CustomerId { get; }
+        public int ProductId { get; }
+        public int CategoryId { get; set; }
         public string Name { get; set; }
-        public float Balance { get; set; }
-        public List<Order> Orders { get; set; }
+        public string Description { get; set; }
+        public float Price { get; set; }
+
         public int TimeCreate { private set; get; }
         public int TimeUpdate { private set; get; }
         public int TimeDelete { private set; get; }
+
+        public Product()
+        {
+
+            
+        }
     }
 }
