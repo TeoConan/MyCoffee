@@ -38,14 +38,14 @@ namespace MyCoffee.Data
             return products;
         }
 
-        public Product getProductByName(string name)
+        public IEnumerable<Product> getProductsByName(string name)
         {
-            var product = _products.First((product) => product.Name.Contains(name));
-            if (product == null)
+            var products = _products.FindAll((product) => product.Name.Contains(name));
+            if (products == null)
             {
                 throw new Exception("Aucun produit trouvé");
             }
-            return product;
+            return products;
         }
 
         public Product getProductByid(int id)

@@ -8,7 +8,7 @@ namespace MyCoffee.Data
     {
 		IEnumerable<Product> getAllProducts();
 
-        Product getProductByName(string name);
+        IEnumerable<Product> getProductsByName(string name);
 
 		IEnumerable<Product> getProductsByCategory(int categoryId);
 
