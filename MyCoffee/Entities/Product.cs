@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MyCoffee.Entities
 {
-    class Product
+    public class Product
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
