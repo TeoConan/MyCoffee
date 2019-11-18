@@ -19,7 +19,7 @@ namespace MyCoffee.Data
 
         public void Welcome()
         {
-            echo("Bienvenue dans MyCoffe");
+            echo("Bienvenue dans MyCoffee");
         }
 
         public void WaitCommand()
@@ -40,15 +40,15 @@ namespace MyCoffee.Data
                     break;
 
                 case "2":
-                    
+                    ListProduct();
                     break;
 
                 case "3":
-                    Documentation();
+                    MakeOrder();
                     break;
 
                 case "4":
-                    
+                    SortShortDates();
                     break;
 
                 case "5":
@@ -62,18 +62,28 @@ namespace MyCoffee.Data
 
         public void Summary()
         {
-            echo("0) Quitter");
-            echo("1) Sommaire des commandes");
-            echo("2) ");
-            echo("3) ");
-            echo("4) ");
-            echo("5) ");
+            echo("1) Documentation");
+            echo("2) Lister les produits");
+            echo("3) Passer une commande");
+            echo("4) Voir les dates courtes");
+            echo("5) Quitter");
         }
 
-        public void Documentation()
+        public void SortShortDates()
         {
 
         }
+
+        public void MakeOrder()
+        {
+
+        }
+
+        public void ListProduct()
+        {
+
+        }
+
 
         private bool AskYesNo()
         {

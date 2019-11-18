@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyCoffee.Data
 {
-    class MCBDContext : DbContext
+    class MCDBContext : DbContext
     {
         private string DBName { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
