@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCoffee.Data;
+using System;
 
 namespace MyCoffee
 {
@@ -6,7 +7,17 @@ namespace MyCoffee
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var console = new UserConsole();
+        }
+
+        public void TestAddObject()
+        {
+            Console.WriteLine("Try to add a new entry in database SQLite");
+
+            using (var dboContext = new MCDBContext())
+            {
+
+            }
         }
     }
 }
