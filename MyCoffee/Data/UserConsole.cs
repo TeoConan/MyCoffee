@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -82,6 +82,7 @@ namespace MyCoffee.Data
 
         public void ListProduct()
         {
+            Console.Clear();
             var mockProductRepository = new MockProductRepository();
 
             var products = mockProductRepository.getAllProducts();
