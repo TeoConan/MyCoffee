@@ -8,11 +8,11 @@ namespace MyCoffee.Entities
     {
         public int Id { get; }
         public int CustomerId { get; set; }
-        private float TotalPrice { get; }
+        private float TotalPrice { get; set; }
 
         public void calculateTotalPrice()
         {
-            TotalPrice = 0.0;
+            TotalPrice = 0;
         }
     }
 }
