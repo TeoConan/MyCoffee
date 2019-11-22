@@ -60,7 +60,7 @@ namespace MyCoffee.Data
 
         public Product getProductByName(string name)
         {
-            var product = _products.First((product) => product.Name.Contains(name));
+            var product = _products.First((product) => product.Name.ToLower().Contains(name.ToLower()));
             if (product == null)
             {
                 throw new Exception("Aucun produit trouvé");
