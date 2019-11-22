@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MyCoffee.Entities
 {
     public class CustomerOrder
     {
-        public int Id { get; }
-        public int CustomerId { get; set; }
+        [Key]
+        public int Id { get; private set; }
         private float TotalPrice { get; set; }
 
         public int TimeCreate { private set; get; }
