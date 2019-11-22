@@ -32,5 +32,9 @@ namespace MyCoffee.Controllers
             }
 
         }
+
+        protected override void DecisionTree(string command, bool DisplayMenu)
+        {
+        }
     }
 }

@@ -33,5 +33,9 @@ namespace MyCoffee.Controllers
             Console.ReadKey();
             Clear();
         }
+
+        protected override void DecisionTree(string command, bool DisplayMenu)
+        {
+        }
     }
 }
