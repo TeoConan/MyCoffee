@@ -10,7 +10,7 @@ namespace MyCoffee
         static void Main(string[] args)
         {
             //TestAddObject();
-            var console = new UserConsole();
+            var console = new MainMenu();
         }
 
         public static void TestAddObject()
