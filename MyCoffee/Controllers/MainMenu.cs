@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MyCoffee.Data;
 using MyCoffee.Entities;
+using MyCoffee.Data;
 
 namespace MyCoffee.Controllers
 {
-    class UserConsole
+    class MainMenu
     {
         string input;
 
-        public UserConsole()
+        public MainMenu()
         {
             Welcome();
             Summary();
@@ -60,6 +60,10 @@ namespace MyCoffee.Controllers
                 case "6":
                     break;
 
+                case "7":
+                    test();
+                    break;
+
                 default:
                     WaitCommand();
                     break;
@@ -75,6 +79,7 @@ namespace MyCoffee.Controllers
             echo("4) Voir les dates courtes");
             echo("5) Lister par catégorie");
             echo("6) Quitter");
+            echo("7) Test");
         }
 
         public void SortShortDates()
@@ -155,8 +160,8 @@ namespace MyCoffee.Controllers
 
         private bool AskYesNo()
         {
-            bool correctAswer = false;
-            bool aswer = false;
+            bool correctAnswer = false;
+            bool answer = false;
 
             do
             {
@@ -167,20 +172,20 @@ namespace MyCoffee.Controllers
                     || input.Equals("y")
                     || input.Equals("yes"))
                 {
-                    correctAswer = true;
-                    aswer = true;
+                    correctAnswer = true;
+                    answer = true;
                 }
 
                 if (input.Equals("non"))
                 {
-                    correctAswer = true;
-                    aswer = false;
+                    correctAnswer = true;
+                    answer = false;
                 }
 
 
-            } while (!correctAswer);
+            } while (!correctAnswer);
 
-            return aswer;
+            return answer;
         }
 
         private void init()
@@ -190,7 +195,7 @@ namespace MyCoffee.Controllers
 
         private void test()
         {
-
+            var test = new Test();
         }
 
         private void clear()
