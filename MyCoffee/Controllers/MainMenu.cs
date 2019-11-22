@@ -46,15 +46,16 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "3":
-                    MakeOrder();
+                    //MakeOrder();
                     break;
 
                 case "4":
-                    SortShortDates();
+                    //SortShortDates();
                     break;
 
                 case "5":
                     ListProductByCategory();
+                    ReturnToSummary();
                     break;
 
                 case "6":
@@ -81,14 +82,11 @@ namespace MyCoffee.Controllers
             Echo("7) Test");
         }
 
-        public void SortShortDates()
+        public void ReturnToSummary()
         {
-
-        }
-
-        public void MakeOrder()
-        {
-
+            Clear();
+            Summary();
+            WaitForCommand();
         }
 
         public void ListProduct()

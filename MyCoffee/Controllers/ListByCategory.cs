@@ -37,6 +37,8 @@ namespace MyCoffee.Controllers
                     ListProducts(1, "Viennoiseries");
                     WaitForKeyPress();
                     break;
+                case "3":
+                    break;
                 default:
                     WaitForCommand();
                     break;
