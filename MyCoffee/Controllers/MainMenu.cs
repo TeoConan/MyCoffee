@@ -104,66 +104,18 @@ namespace MyCoffee.Controllers
                 Console.WriteLine(product.Name + "\n");
             }
 
-            ReturnToWaitingCommand();
+            Console.WriteLine("Appuyez sur une touche pour revenir au menu.\n");
+
+            Console.ReadKey();
+            Clear();
+            Summary();
+            WaitForCommand();
         }
 
         public void ListProductByCategory()
         {
             var listByCategory = new ListByCategory();
         }
-
-        //TODO DISPLACE
-        public void WaitForCommandListByCategory()
-        {
-            //Clear();
-            //Echo("1) Sandwich");
-            //Echo("2) Viennoiserie\n");
-
-            //Echo("Veuillez entrer une commande");
-            //Input = Console.ReadLine();
-
-            //switch (Input)
-            //{
-            //    case "1":
-            //        ListByCategory(2, "Sandwiches");
-            //        break;
-            //    case "2":
-            //        ListByCategory(1, "Viennoiseries");
-            //        break;
-            //    default:
-            //        WaitForCommandListByCategory();
-            //        break;
-
-            //}
-        }
-
-        //TODO Displace
-        public void ListByCategory(int categoryId, string category)
-        {
-            //Console.Clear();
-            //var mockProductRepository = new MockProductRepository();
-
-            //var products = mockProductRepository.getProductsByCategory(categoryId);
-            //Console.WriteLine("Liste des produits de la catégorie : " + category + "\n" );
-
-            //foreach (Product product in products)
-            //{
-            //    Console.WriteLine(product.Name + "\n");
-            //}
-
-            //ReturnToWaitingCommand();
-        }
-
-        //TODO Displace
-        public void ReturnToWaitingCommand()
-        {
-            //Console.WriteLine("Appuyez sur une touche pour revenir au menu.\n");
-
-            //Console.ReadKey();
-            //Summary();
-            //WaitForCommand();
-        }
-
 
         private bool AskYesNo()
         {
