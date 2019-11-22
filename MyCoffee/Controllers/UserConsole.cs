@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using MyCoffee.Entities;
 
-namespace MyCoffee.Data
+namespace MyCoffee.Controllers
 {
     class UserConsole
     {
