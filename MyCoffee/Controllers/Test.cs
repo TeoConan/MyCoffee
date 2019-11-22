@@ -7,6 +7,11 @@ namespace MyCoffee.Controllers
     {
         public Test()
         {
+            
+        }
+
+        public void AddProduct()
+        {
             Console.WriteLine("Try to add a new entry in database SQLite");
 
             using (var dboContext = new MCDBContext())
@@ -19,16 +24,29 @@ namespace MyCoffee.Controllers
                     CategoryId = 0
                 };
 
-                var listProduct = dboContext.Product;
-
-                foreach (Product aProduct in listProduct)
-                    Console.WriteLine($"{aProduct.Id} | {aProduct.Name} | {aProduct.Price}");
-
                 dboContext.Product.Add(product);
                 dboContext.SaveChanges();
             }
 
             Console.WriteLine("End");
+        }
+
+        public void GetProducts()
+        {
+            Console.WriteLine("Get products in database");
+
+            using (var dboContext = new MCDBContext())
+            {
+                var listProduct = dboContext.Product;
+
+                foreach (Product aProduct in listProduct)
+                {
+                    Console.WriteLine($"{aProduct.Id} | {aProduct.Name} | {aProduct.Price}");
+                }
+            }
+
+            Console.WriteLine("End");
+
         }
     }
 }
