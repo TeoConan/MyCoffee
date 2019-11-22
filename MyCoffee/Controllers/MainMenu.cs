@@ -48,7 +48,6 @@ namespace MyCoffee.Controllers
 
                 case "2":
                     ListAllProducts();
-                    ReturnToSummary();
                     break;
 
                 case "3":
@@ -73,11 +72,9 @@ namespace MyCoffee.Controllers
                     break;
                 case "8":
                     DebugShowProduct();
-                    ReturnToSummary();
                     break;
                 case "9":
                     DebugSearchProduct();
-                    ReturnToSummary();
                     break;
 
 
@@ -92,7 +89,7 @@ namespace MyCoffee.Controllers
             }
         }
 
-        public void ListProduct()
+        public void ListAllProducts()
         {
             Clear();
             var mockProductRepository = new MockProductRepository();
@@ -120,6 +117,14 @@ namespace MyCoffee.Controllers
             //var test = new Test();
         }
 
-        
+        public void DebugSearchProduct()
+        {
+            var searchAProduct = new SearchAProduct();
+        }
+
+        public void DebugShowProduct()
+        {
+            var productViewer = new ProductViewer(5);
+        }
     }
 }
