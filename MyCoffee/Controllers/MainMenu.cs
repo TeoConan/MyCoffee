@@ -65,6 +65,10 @@ namespace MyCoffee.Controllers
                 case "7":
                     test();
                     break;
+                case "8":
+                    DebugShowProduct();
+                    ReturnToSummary();
+                    break;
 
                 default:
                     WaitForCommand();
@@ -81,6 +85,7 @@ namespace MyCoffee.Controllers
             Echo("5) Lister par catégorie");
             Echo("6) Quitter");
             Echo("7) Test");
+            Echo("8) Afficher le produit 5");
         }
 
         public void ReturnToSummary()
@@ -138,6 +143,11 @@ namespace MyCoffee.Controllers
         private void test()
         {
             var test = new Test();
+        }
+
+        public void DebugShowProduct()
+        {
+            var productViewer = new ProductViewer(5);
         }
     }
 }

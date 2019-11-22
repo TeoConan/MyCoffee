@@ -2,20 +2,31 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace MyCoffee.Data
 {
     public class MockCategoryRepository : ICategoryRepository
     {
-        public IEnumerable<Category> Get()
+        private List<Category> _categories = new List<Category>
         {
-            yield return new Category { CategoryId = 0, Value = "Hot drinks" };
-            yield return new Category { CategoryId = 1, Value = "Viennoiseries" };
-            yield return new Category { CategoryId = 2, Value = "Sandwiches" };
-            yield return new Category { CategoryId = 3, Value = "Salads" };
-            yield return new Category { CategoryId = 4, Value = "Drinks" };
-            yield return new Category { CategoryId = 5, Value = "Snacks" };
-            yield return new Category { CategoryId = 6, Value = "Lunch boxes" };
+            new Category { Id = 0, Name = "Hot drinks" },
+            new Category { Id = 1, Name = "Viennoiseries" },
+            new Category { Id = 2, Name = "Sandwiches" },
+            new Category { Id = 3, Name = "Salads" },
+            new Category { Id = 4, Name = "Drinks" },
+            new Category { Id = 5, Name = "Snacks" },
+            new Category { Id = 6, Name = "Lunch boxes" }
+        };
+
+        public string GetCategoryLabel(int id)
+        {
+            var category = _categories.First((category) => category.Id == id);
+            if (category == null)
+            {
+                return "Catégorie non trouvée";
+            }
+            return category.Name;
         }
     }
 }

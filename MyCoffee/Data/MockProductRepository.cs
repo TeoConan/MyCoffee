@@ -56,7 +56,7 @@ namespace MyCoffee.Data
             return products;
         }
 
-        public Product getProductByid(int id)
+        public Product getProductById(int id)
         {
             var product = _products.First((product) => product.Id == id);
             if (product == null)

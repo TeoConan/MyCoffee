@@ -19,9 +19,7 @@ namespace MyCoffee.Controllers
         public void Summary()
         {
             Echo("1) Sandwich");
-            Echo("2) Viennoiserie");
-            Echo("3) Retour au menu principal");
-
+            Echo("2) Viennoiserie\n");
         }
 
         public void WaitForCommand()
@@ -54,17 +52,17 @@ namespace MyCoffee.Controllers
             var mockProductRepository = new MockProductRepository();
 
             var products = mockProductRepository.getProductsByCategory(categoryId);
-            Echo("Liste des produits de la catégorie : " + category + "\n");
+            Console.WriteLine("Liste des produits de la catégorie : " + category + "\n");
 
             foreach (Product product in products)
             {
-                Echo(product.Name + "\n");
+                Console.WriteLine(product.Name + "\n");
             }
         }
 
         public void WaitForKeyPress()
         {
-            Echo("Appuyez sur une touche pour revenir au menu.\n");
+            Console.WriteLine("Appuyez sur une touche pour revenir au menu.\n");
 
             Console.ReadKey();
             Clear();
