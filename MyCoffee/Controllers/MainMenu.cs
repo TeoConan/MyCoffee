@@ -7,38 +7,38 @@ using MyCoffee.Data;
 
 namespace MyCoffee.Controllers
 {
-    class MainMenu
+    class MainMenu : MyCoffeeConsole
     {
-        string input;
+        public string Input { get; set; }
 
         public MainMenu()
         {
             Welcome();
             Summary();
-            WaitCommand();
+            WaitForCommand();
 
         }
 
         public void Welcome()
         {
-            echo("Bienvenue dans MyCoffee");
+            Echo("Bienvenue dans MyCoffee");
         }
 
-        public void WaitCommand()
+        public void WaitForCommand()
         {
-            echo("Veuillez entrer une commande");
-            input = Console.ReadLine();
+            Echo("Veuillez entrer une commande");
+            Input = Console.ReadLine();
 
-            switch (input)
+            switch (Input)
             {
                 case "0":
                     return;
                     break;
 
                 case "1":
-                    clear();
+                    Clear();
                     Summary();
-                    WaitCommand();
+                    WaitForCommand();
                     break;
 
                 case "2":
@@ -54,7 +54,7 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "5":
-                    WaitCommandListByCategory();
+                    ListProductByCategory();
                     break;
 
                 case "6":
@@ -65,21 +65,20 @@ namespace MyCoffee.Controllers
                     break;
 
                 default:
-                    WaitCommand();
+                    WaitForCommand();
                     break;
             }
         }
 
         public void Summary()
         {
-            Console.Clear();
-            echo("1) Documentation");
-            echo("2) Lister les produits");
-            echo("3) Passer une commande");
-            echo("4) Voir les dates courtes");
-            echo("5) Lister par catégorie");
-            echo("6) Quitter");
-            echo("7) Test");
+            Echo("1) Documentation");
+            Echo("2) Lister les produits");
+            Echo("3) Passer une commande");
+            Echo("4) Voir les dates courtes");
+            Echo("5) Lister par catégorie");
+            Echo("6) Quitter");
+            Echo("7) Test");
         }
 
         public void SortShortDates()
@@ -108,53 +107,61 @@ namespace MyCoffee.Controllers
             ReturnToWaitingCommand();
         }
 
-        public void WaitCommandListByCategory()
+        public void ListProductByCategory()
         {
-            Console.Clear();
-            echo("1) Sandwich");
-            echo("2) Viennoiserie\n");
-
-            echo("Veuillez entrer une commande");
-            input = Console.ReadLine();
-
-            switch (input)
-            {
-                case "1":
-                    ListByCategory(2, "Sandwiches");
-                    break;
-                case "2":
-                    ListByCategory(1, "Viennoiseries");
-                    break;
-                default:
-                    WaitCommandListByCategory();
-                    break;
-
-            }
+            var listByCategory = new ListByCategory();
         }
 
+        //TODO DISPLACE
+        public void WaitForCommandListByCategory()
+        {
+            //Clear();
+            //Echo("1) Sandwich");
+            //Echo("2) Viennoiserie\n");
+
+            //Echo("Veuillez entrer une commande");
+            //Input = Console.ReadLine();
+
+            //switch (Input)
+            //{
+            //    case "1":
+            //        ListByCategory(2, "Sandwiches");
+            //        break;
+            //    case "2":
+            //        ListByCategory(1, "Viennoiseries");
+            //        break;
+            //    default:
+            //        WaitForCommandListByCategory();
+            //        break;
+
+            //}
+        }
+
+        //TODO Displace
         public void ListByCategory(int categoryId, string category)
         {
-            Console.Clear();
-            var mockProductRepository = new MockProductRepository();
+            //Console.Clear();
+            //var mockProductRepository = new MockProductRepository();
 
-            var products = mockProductRepository.getProductsByCategory(categoryId);
-            Console.WriteLine("Liste des produits de la catégorie : " + category + "\n" );
+            //var products = mockProductRepository.getProductsByCategory(categoryId);
+            //Console.WriteLine("Liste des produits de la catégorie : " + category + "\n" );
 
-            foreach (Product product in products)
-            {
-                Console.WriteLine(product.Name + "\n");
-            }
+            //foreach (Product product in products)
+            //{
+            //    Console.WriteLine(product.Name + "\n");
+            //}
 
-            ReturnToWaitingCommand();
+            //ReturnToWaitingCommand();
         }
 
+        //TODO Displace
         public void ReturnToWaitingCommand()
         {
-            Console.WriteLine("Appuyez sur une touche pour revenir au menu.\n");
+            //Console.WriteLine("Appuyez sur une touche pour revenir au menu.\n");
 
-            Console.ReadKey();
-            Summary();
-            WaitCommand();
+            //Console.ReadKey();
+            //Summary();
+            //WaitForCommand();
         }
 
 
@@ -165,18 +172,18 @@ namespace MyCoffee.Controllers
 
             do
             {
-                var input = Console.ReadLine();
+                var Input = Console.ReadLine();
 
-                if (input.Equals("oui")
-                    || input.Equals("o")
-                    || input.Equals("y")
-                    || input.Equals("yes"))
+                if (Input.Equals("oui")
+                    || Input.Equals("o")
+                    || Input.Equals("y")
+                    || Input.Equals("yes"))
                 {
                     correctAnswer = true;
                     answer = true;
                 }
 
-                if (input.Equals("non"))
+                if (Input.Equals("non"))
                 {
                     correctAnswer = true;
                     answer = false;
@@ -196,16 +203,6 @@ namespace MyCoffee.Controllers
         private void test()
         {
             var test = new Test();
-        }
-
-        private void clear()
-        {
-            Console.Clear();
-        }
-
-        private void echo(string txt)
-        {
-            Console.WriteLine(txt);
         }
     }
 }
