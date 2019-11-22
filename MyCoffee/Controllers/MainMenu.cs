@@ -42,7 +42,8 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "2":
-                    ListProduct();
+                    ListAllProducts();
+                    ReturnToSummary();
                     break;
 
                 case "3":
@@ -89,25 +90,9 @@ namespace MyCoffee.Controllers
             WaitForCommand();
         }
 
-        public void ListProduct()
+        public void ListAllProducts()
         {
-            Console.Clear();
-            var mockProductRepository = new MockProductRepository();
-
-            var products = mockProductRepository.getAllProducts();
-            Console.WriteLine("Liste des produits : \n");
-
-            foreach (Product product in products)
-            {
-                Console.WriteLine(product.Name + "\n");
-            }
-
-            Console.WriteLine("Appuyez sur une touche pour revenir au menu.\n");
-
-            Console.ReadKey();
-            Clear();
-            Summary();
-            WaitForCommand();
+            var lisAllProducts = new ListAllProducts();
         }
 
         public void ListProductByCategory()
