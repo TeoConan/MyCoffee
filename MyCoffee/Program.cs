@@ -2,6 +2,7 @@
 using MyCoffee.Entities;
 using System;
 using MyCoffee.Controllers;
+using System.Linq;
 
 namespace MyCoffee
 {
@@ -9,8 +10,8 @@ namespace MyCoffee
     {
         static void Main(string[] args)
         {
-            //TestAddObject();
-            var console = new UserConsole();
+            //var console = new UserConsole();
+            TestAddObject();
         }
 
         public static void TestAddObject()
@@ -25,6 +26,11 @@ namespace MyCoffee
                     Description = "Lorem ipsum dolor sit amet",
                     CategoryId = 0
                 };
+
+                var listProduct = dboContext.Product;
+
+                foreach (Product aProduct in listProduct)
+                Console.WriteLine($"{aProduct.Id} | {aProduct.Name} | {aProduct.Price}");
 
                 dboContext.Product.Add(product);
                 dboContext.SaveChanges();
