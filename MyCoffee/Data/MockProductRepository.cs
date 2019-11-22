@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using MyCoffee.Entities;
 using System.Linq;
 
+//TODO Changer les noms des méthodes pour mettre des majuscules au début.
+
 namespace MyCoffee.Data
 {
     public class MockProductRepository : IProductsRepository
@@ -54,6 +56,16 @@ namespace MyCoffee.Data
                 throw new Exception("Aucun produit trouvé");
             }
             return products;
+        }
+
+        public Product getProductByName(string name)
+        {
+            var product = _products.First((product) => product.Name.Contains(name));
+            if (product == null)
+            {
+                throw new Exception("Aucun produit trouvé");
+            }
+            return product;
         }
 
         public Product getProductById(int id)

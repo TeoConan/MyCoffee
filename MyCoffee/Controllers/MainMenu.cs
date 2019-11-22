@@ -69,6 +69,10 @@ namespace MyCoffee.Controllers
                     DebugShowProduct();
                     ReturnToSummary();
                     break;
+                case "9":
+                    DebugSearchProduct();
+                    ReturnToSummary();
+                    break;
 
                 default:
                     WaitForCommand();
@@ -85,7 +89,9 @@ namespace MyCoffee.Controllers
             Echo("5) Lister par catégorie");
             Echo("6) Quitter");
             Echo("7) Test");
-            Echo("8) Afficher le produit 5");
+            Echo("8) DEBUG - Afficher le produit 5");
+            Echo("9) DEBUG - Rechercher un produit");
+
         }
 
         public void ReturnToSummary()
@@ -148,6 +154,11 @@ namespace MyCoffee.Controllers
         public void DebugShowProduct()
         {
             var productViewer = new ProductViewer(5);
+        }
+
+        public void DebugSearchProduct()
+        {
+            var searchAProduct = new SearchAProduct();
         }
     }
 }
