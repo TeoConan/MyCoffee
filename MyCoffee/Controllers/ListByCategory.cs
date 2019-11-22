@@ -10,40 +10,12 @@ namespace MyCoffee.Controllers
 
         public ListByCategory()
         {
-            Clear();
-            Summary();
-            WaitForCommand();
-            
-        }
+            _summary = "";
+            _summary += "0) Menu principal\n";
+            _summary += "1) Sandwich\n";
+            _summary += "2) Viennoiserie\n";
 
-        public void Summary()
-        {
-            Echo("1) Sandwich");
-            Echo("2) Viennoiserie\n");
-        }
-
-        public void WaitForCommand()
-        {
-            Echo("Veuillez choisir la catégorie : ");
-            Input = Console.ReadLine();
-
-            switch (Input)
-            {
-                case "1":
-                    ListProducts(2, "Sandwiches");
-                    WaitForKeyPress();
-                    break;
-                case "2":
-                    ListProducts(1, "Viennoiseries");
-                    WaitForKeyPress();
-                    break;
-                case "3":
-                    break;
-                default:
-                    WaitForCommand();
-                    break;
-
-            }
+            DisplayMainMenu();
         }
 
         public void ListProducts(int categoryId, string category)
@@ -62,12 +34,37 @@ namespace MyCoffee.Controllers
 
         public void WaitForKeyPress()
         {
-            Console.WriteLine("Appuyez sur une touche pour revenir au menu.\n");
+            AskKeyPress();
+            DisplayMainMenu();
+        }
 
-            Console.ReadKey();
-            Clear();
-            Summary();
-            WaitForCommand();
+        protected override void DecisionTree(string Input, bool DisplayMenu)
+        {
+            switch (Input)
+            {
+                case "0":
+                    return;
+                    break;
+                case "1":
+                    ListProducts(2, "Sandwiches");
+                    WaitForKeyPress();
+                    break;
+                case "2":
+                    ListProducts(1, "Viennoiseries");
+                    WaitForKeyPress();
+                    break;
+                case "3":
+                    break;
+                default:
+                    DecisionTree(AskCommand(), DisplayMenu);
+                    break;
+
+            }
+
+            if (DisplayMenu)
+            {
+                DisplayMainMenu();
+            }
         }
     }
 }
