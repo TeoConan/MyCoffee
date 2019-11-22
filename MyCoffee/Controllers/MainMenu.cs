@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MyCoffee.Entities;
 using MyCoffee.Data;
+using MyCoffee.Controllers;
 
 namespace MyCoffee.Controllers
 {
@@ -20,6 +21,9 @@ namespace MyCoffee.Controllers
             _summary += "5) Lister par catégorie\n";
             _summary += "6) Quitter\n";
             _summary += "7) Test\n";
+            _summary += "8) DEBUG - Afficher le produit 5\n";
+            _summary += "9) DEBUG - Rechercher un produit par id ou nom\n";
+
 
             Welcome();
             DisplayMainMenu();
@@ -113,7 +117,7 @@ namespace MyCoffee.Controllers
 
         private void test()
         {
-            var explorer = new Explorer();
+            //var explorer = new Explorer();
             //var test = new Test();
         }
 
