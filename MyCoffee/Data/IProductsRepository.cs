@@ -12,6 +12,6 @@ namespace MyCoffee.Data
 
 		IEnumerable<Product> getProductsByCategory(int categoryId);
 
-		Product getProductByid(int id);
+		Product getProductById(int id);
     }
 }

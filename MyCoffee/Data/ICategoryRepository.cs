@@ -7,6 +7,6 @@ namespace MyCoffee.Data
 {
     public interface ICategoryRepository
     {
-        IEnumerable<Category> Get();
+        string GetCategoryLabel(int id);
     }
 }

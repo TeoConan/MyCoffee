@@ -47,7 +47,8 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "2":
-                    ListProduct();
+                    ListAllProducts();
+                    ReturnToSummary();
                     break;
 
                 case "3":
@@ -69,6 +70,14 @@ namespace MyCoffee.Controllers
 
                 case "7":
                     test();
+                    break;
+                case "8":
+                    DebugShowProduct();
+                    ReturnToSummary();
+                    break;
+                case "9":
+                    DebugSearchProduct();
+                    ReturnToSummary();
                     break;
 
 
