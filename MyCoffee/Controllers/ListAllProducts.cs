@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using MyCoffee.Data;
 using MyCoffee.Entities;
 
@@ -15,15 +17,35 @@ namespace MyCoffee.Controllers
 
         public void DisplayProducts()
         {
-            var mockProductRepository = new MockProductRepository();
 
-            var products = mockProductRepository.getAllProducts();
+            var listProduct = GetProducts();
+
             Echo("Liste des produits : \n");
 
-            foreach (Product product in products)
+            foreach (Product aProduct in listProduct)
             {
-                Echo(product.Name + "\n");
+                Console.WriteLine($"{aProduct.Id} | {aProduct.Name} | {aProduct.Price}");
             }
+            
+        }
+
+        public List<Product> GetProducts()
+        {
+            List<Product> listProducts = new List<Product>();
+            Console.WriteLine("Get products in database");
+
+            using (var dboContext = new MCDBContext())
+            {
+                var DbList = dboContext.Product;
+
+                foreach (Product product in DbList)
+                {
+                    listProducts.Add(product);
+                }
+            }
+
+            return listProducts;
+
         }
 
         public void WaitForKeyPress()
