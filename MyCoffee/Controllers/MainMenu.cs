@@ -23,7 +23,7 @@ namespace MyCoffee.Controllers
             _summary += "7) Test\n";
             _summary += "8) DEBUG - Afficher le produit 5\n";
             _summary += "9) DEBUG - Rechercher un produit par id ou nom\n";
-
+            _summary += "10) DEBUG - Créer un produit\n";
 
             Welcome();
             DisplayMainMenu();
@@ -43,7 +43,6 @@ namespace MyCoffee.Controllers
             {
                 case "0":
                     return;
-                    break;
 
                 case "1":
                     Clear();
@@ -80,7 +79,9 @@ namespace MyCoffee.Controllers
                 case "9":
                     DebugSearchProduct();
                     break;
-
+                case "10":
+                    DebugCreateProduct();
+                    break;
 
                 default:
                     DecisionTree(AskCommand(), DisplayMenu);
@@ -129,6 +130,28 @@ namespace MyCoffee.Controllers
         public void DebugShowProduct()
         {
             var productViewer = new ProductViewer(5);
+            AskKeyPress();
+        }
+
+        public void DebugCreateProduct()
+        {
+            Clear();
+            var id = AskCommand("Id :");
+            var categoryId = AskCommand("Catégorie : ");
+            var name = AskCommand("Nom : ");
+            var description = AskCommand("Description :");
+            var price = AskCommand("Prix : ");
+
+            var product = new Product { Id = int.Parse(id), CategoryId = int.Parse(categoryId), Name = name, Description = description, Price = float.Parse(price) };
+
+            var producViewer = new ProductViewer(product);
+            Echo("\n-------------------");
+            Echo("\n1) Valider l'ajout de produit.");
+            Echo("\n2) Annuler l'ajout de produit.\n");
+
+            AskCommand();
+
+            return;
         }
     }
 }

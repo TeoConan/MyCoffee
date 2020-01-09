@@ -30,20 +30,20 @@ namespace MyCoffee.Controllers
             {
                 ShowProductProfile(product);
             }
-            WaitForKeyPress();
+            //WaitForKeyPress();
         }
 
         public ProductViewer(Product product)
         {
             Clear();
             ShowProductProfile(product);
-            WaitForKeyPress();
+            //WaitForKeyPress();
         }
 
         public void ShowProductProfile(Product product)
         {
             string productDetails = "Nom : " + product.Name;
-            productDetails += "\nId : " + product.Id;
+            productDetails += "\n\nId : " + product.Id;
             var mockCategoryRepository = new MockCategoryRepository();
             string categoryLabel = mockCategoryRepository.GetCategoryLabel(product.CategoryId);
             productDetails += "\n\nCatégorie : " + categoryLabel;
