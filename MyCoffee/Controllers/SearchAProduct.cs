@@ -25,10 +25,12 @@ namespace MyCoffee.Controllers
             if (int.TryParse(Input, out id))
             {
                 var productViewer = new ProductViewer(id);
+                AskKeyPress();
             } else
             {
                 product = mockProductRepository.getProductByName(Input);
                 var productViewer = new ProductViewer(product);
+                AskKeyPress();
             }
 
         }
