@@ -50,7 +50,7 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "2":
-                    ListAllProducts();
+                    new ListAllProducts();
                     break;
 
                 case "3":
@@ -94,23 +94,6 @@ namespace MyCoffee.Controllers
             }
         }
 
-        public void ListAllProducts()
-        {
-            Clear();
-            var mockProductRepository = new MockProductRepository();
-
-            var products = mockProductRepository.getAllProducts();
-            Echo("Liste des produits : \n");
-
-            foreach (Product product in products)
-            {
-                Console.WriteLine(product.Name + "\n");
-            }
-
-            AskKeyPress("Appuyez sur une touche pour revenir au menu.\n");
-            DisplayMainMenu();
-        }
-
         public void ListProductByCategory()
         {
             var listByCategory = new ListByCategory();
@@ -119,7 +102,7 @@ namespace MyCoffee.Controllers
         private void test()
         {
             //var explorer = new Explorer();
-            //var test = new Test();
+            var test = new Test();
         }
 
         public void DebugSearchProduct()

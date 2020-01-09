@@ -7,23 +7,16 @@ namespace MyCoffee.Controllers
     {
         public Test()
         {
-            
+            //AddProduct(new Product { Id = 1, CategoryId = 2, Name = "Panini Chelou", Description = "Contenu étrange de sucré-salé", Price = 5 });
+            GetProducts();
         }
 
-        public void AddProduct()
+        public void AddProduct(Product product)
         {
             Console.WriteLine("Try to add a new entry in database SQLite");
 
             using (var dboContext = new MCDBContext())
             {
-                var product = new Product()
-                {
-                    Name = "Panini Noccialata",
-                    Price = 23.05f,
-                    Description = "Lorem ipsum dolor sit amet",
-                    CategoryId = 0
-                };
-
                 dboContext.Product.Add(product);
                 dboContext.SaveChanges();
             }
@@ -46,6 +39,7 @@ namespace MyCoffee.Controllers
             }
 
             Console.WriteLine("End");
+            Console.ReadLine();
 
         }
     }
