@@ -17,7 +17,7 @@ namespace MyCoffee.Data
             new Product { Id = 4, CategoryId = 5, Name = "Brownie", Description = "erverv", Price = 0.99F },
             new Product { Id = 5, CategoryId = 5, Name = "Muffin", Description = "ervzrtb", Price = 1F },
             new Product { Id = 6, CategoryId = 6, Name = "PastaBox Bolo", Description = "dsdfgfngh,fj;gk", Price = 6.60F },
-            new Product { Id = 7, CategoryId = 6, Name = "Pizza 4 fromage", Description = "dfbs", Price = 7.90F },
+            new Product { Id = 7, CategoryId = 6, Name = "Pizza 4 fromages", Description = "dfbs", Price = 7.90F },
             new Product { Id = 8, CategoryId = 4, Name = "Ice Tea", Description = "qr", Price = 4.55F },
             new Product { Id = 9, CategoryId = 3, Name = "Salade Piedmontaise", Description = "qrdqdb", Price = 8.45F },
             new Product { Id = 10, CategoryId = 5, Name = "Snicker", Description = "qdvqrv", Price = 1.45F },

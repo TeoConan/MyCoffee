@@ -35,7 +35,6 @@ namespace MyCoffee.Controllers
         public void WaitForKeyPress()
         {
             AskKeyPress();
-            DisplayMainMenu();
         }
 
         protected override void DecisionTree(string Input, bool DisplayMenu)
@@ -44,7 +43,6 @@ namespace MyCoffee.Controllers
             {
                 case "0":
                     return;
-                    break;
                 case "1":
                     ListProducts(2, "Sandwiches");
                     WaitForKeyPress();
