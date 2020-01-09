@@ -93,6 +93,6 @@ namespace MyCoffee.Controllers
             return answer;
         }
 
-        abstract protected void DecisionTree(string command, bool DisplayMenu);
+        abstract protected void DecisionTree(string Input, bool DisplayMenu);
     }
 }
