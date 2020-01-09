@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCoffee.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -21,6 +22,35 @@ namespace MyCoffee.Entities
         {
 
             
+        }
+
+        public static bool AddProduct(Product product)
+        {
+            using (var dboContext = new MCDBContext())
+            {
+                dboContext.Product.Add(product);
+                return (dboContext.SaveChanges() > 0);
+            }
+
+            return false;   
+        }
+
+        public static List<Product> GetAllProducts()
+        {
+            List<Product> listProducts = new List<Product>();
+
+            using (var dboContext = new MCDBContext())
+            {
+                var DbList = dboContext.Product;
+
+                foreach (Product product in DbList)
+                {
+                    listProducts.Add(product);
+                }
+            }
+
+            return listProducts;
+
         }
     }
 }

@@ -17,36 +17,20 @@ namespace MyCoffee.Controllers
 
         public void DisplayProducts()
         {
+            Console.WriteLine("Chargement...");
+            var listProduct = Product.GetAllProducts();
 
-            var listProduct = GetProducts();
-
+            Clear();
             Echo("Liste des produits : \n");
+            Echo("Id | CategoryId | Name | Description | Price | Create | Update | Delete");
 
             foreach (Product aProduct in listProduct)
             {
-                Console.WriteLine($"{aProduct.Id} | {aProduct.Name} | {aProduct.Price}");
+                Console.WriteLine($"{aProduct.Id} | {aProduct.CategoryId} | {aProduct.Name} | {aProduct.Description} | {aProduct.Price} | {aProduct.TimeCreate} |  {aProduct.TimeUpdate} | {aProduct.TimeDelete}");
             }
-            
         }
 
-        public List<Product> GetProducts()
-        {
-            List<Product> listProducts = new List<Product>();
-            Console.WriteLine("Get products in database");
-
-            using (var dboContext = new MCDBContext())
-            {
-                var DbList = dboContext.Product;
-
-                foreach (Product product in DbList)
-                {
-                    listProducts.Add(product);
-                }
-            }
-
-            return listProducts;
-
-        }
+        
 
         public void WaitForKeyPress()
         {
