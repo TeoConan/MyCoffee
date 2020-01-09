@@ -30,7 +30,7 @@ namespace MyCoffee.Data
 
         public DbSet<Customer> Customer { get; set; }
         public DbSet<CustomerOrder> CustomerOrder { get; set; }
-        public DbSet<OrderLine> OderLine { get; set; }
+        public DbSet<OrderLine> OrderLine { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Stock> Stock { get; set; }
 

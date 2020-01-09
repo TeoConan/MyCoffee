@@ -1,3 +1,4 @@
+using MyCoffee.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,5 +20,34 @@ namespace MyCoffee.Entities
         {
             TotalPrice = 0;
         }
+
+           public static bool AddCustomerOrder(CustomerOrder customerOrder)
+    {
+        using (var dboContext = new MCDBContext())
+        {
+            dboContext.CustomerOrder.Add(customerOrder);
+            return (dboContext.SaveChanges() > 0);
+        }
+
+        return false;
+    }
+
+    public static List<CustomerOrder> GetAllCustomerOrder()
+    {
+        List<CustomerOrder> listCustomerOrders = new List<CustomerOrder>();
+
+        using (var dboContext = new MCDBContext())
+        {
+            var DbList = dboContext.CustomerOrder;
+
+            foreach (CustomerOrder CustomerOrder in DbList)
+            {
+                listCustomerOrders.Add(CustomerOrder);
+            }
+        }
+
+        return listCustomerOrders;
+
+    }
     }
 }

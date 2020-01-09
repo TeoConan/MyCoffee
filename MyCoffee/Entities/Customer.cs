@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCoffee.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -18,5 +19,35 @@ namespace MyCoffee.Entities
         public int TimeCreate { private set; get; }
         public int TimeUpdate { private set; get; }
         public int TimeDelete { private set; get; }
+
+
+        public static bool AddCustomer(Customer customer)
+        {
+            using (var dboContext = new MCDBContext())
+            {
+                dboContext.Customer.Add(customer);
+                return (dboContext.SaveChanges() > 0);
+            }
+
+            return false;
+        }
+
+        public static List<Customer> GetAllCustomer()
+        {
+            List<Customer> listCustomers = new List<Customer>();
+
+            using (var dboContext = new MCDBContext())
+            {
+                var DbList = dboContext.Customer;
+
+                foreach (Customer Customer in DbList)
+                {
+                    listCustomers.Add(Customer);
+                }
+            }
+
+            return listCustomers;
+
+        }
     }
 }

@@ -1,3 +1,4 @@
+using MyCoffee.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,5 +18,33 @@ namespace MyCoffee.Entities
         public int TimeUpdate { private set; get; }
         public int TimeDelete { private set; get; }
 
+        public static bool AddOrderLine(OrderLine orderLine)
+        {
+            using (var dboContext = new MCDBContext())
+            {
+                dboContext.OrderLine.Add(orderLine);
+                return (dboContext.SaveChanges() > 0);
+            }
+
+            return false;
+        }
+
+        public static List<OrderLine> GetAllOrderLine()
+        {
+            List<OrderLine> listOrderLines = new List<OrderLine>();
+
+            using (var dboContext = new MCDBContext())
+            {
+                var DbList = dboContext.OrderLine;
+
+                foreach (OrderLine OrderLine in DbList)
+                {
+                    listOrderLines.Add(OrderLine);
+                }
+            }
+
+            return listOrderLines;
+
+        }
     }
 }
