@@ -50,7 +50,7 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "2":
-                    new ListAllProducts();
+                    ListAllProducts();
                     break;
 
                 case "3":
@@ -94,6 +94,23 @@ namespace MyCoffee.Controllers
             }
         }
 
+        public void ListAllProducts()
+        {
+            Clear();
+            var mockProductRepository = new MockProductRepository();
+
+            var products = mockProductRepository.getAllProducts();
+            Echo("Liste des produits : \n");
+
+            foreach (Product product in products)
+            {
+                Console.WriteLine(product.Name + "\n");
+            }
+
+            AskKeyPress("Appuyez sur une touche pour revenir au menu.\n");
+            DisplayMainMenu();
+        }
+
         public void ListProductByCategory()
         {
             var listByCategory = new ListByCategory();
@@ -102,7 +119,7 @@ namespace MyCoffee.Controllers
         private void test()
         {
             //var explorer = new Explorer();
-            var test = new Test();
+            //var test = new Test();
         }
 
         public void DebugSearchProduct()
@@ -120,10 +137,20 @@ namespace MyCoffee.Controllers
         {
             Clear();
             var id = AskCommand("Id :");
-            var categoryId = AskCommand("Catégorie : ");
+
+            var mockCategoryRepository = new MockCategoryRepository();
+            var categories = mockCategoryRepository.GetAllCategories();
+
+            Echo("\nCATEGORIES\n----------");
+            foreach (var category in categories)
+            {
+                Echo(category.Id + ") " + category.Name);
+            }
+
+            var categoryId = AskCommand("\nId de la catégorie : ");
             var name = AskCommand("Nom : ");
             var description = AskCommand("Description :");
-            var price = AskCommand("Prix : ");
+            var price = AskCommand("Prix avec une virgule s'il vous plait : ");
 
             var product = new Product { Id = int.Parse(id), CategoryId = int.Parse(categoryId), Name = name, Description = description, Price = float.Parse(price) };
 

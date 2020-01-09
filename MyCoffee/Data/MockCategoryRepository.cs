@@ -24,9 +24,18 @@ namespace MyCoffee.Data
             var category = _categories.First((category) => category.Id == id);
             if (category == null)
             {
-                return "Catégorie non trouvée";
+                return "Catégorie non trouvée.";
             }
             return category.Name;
+        }
+
+        public List<Category> GetAllCategories()
+        {
+            if (_categories == null)
+            {
+                throw new Exception("Aucune catégorie trouvée.");
+            }
+            return _categories;
         }
     }
 }
