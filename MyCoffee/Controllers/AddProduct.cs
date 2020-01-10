@@ -21,7 +21,7 @@ namespace MyCoffee.Controllers
 
             var product = new Product { Id = id, CategoryId = categoryId, Name = name, Description = description, Price = price };
 
-            Boolean isProductValidated = ValidateProduct(product);
+            bool isProductValidated = ValidateProduct(product);
 
             if (isProductValidated)
             {
@@ -97,10 +97,10 @@ namespace MyCoffee.Controllers
             return result;
         }
 
-        public Boolean ValidateProduct(Product product)
+        public bool ValidateProduct(Product product)
         {
             string entry;
-            Boolean productChecked = false;
+            bool productChecked = false;
 
             var producViewer = new ProductViewer(product);
             Echo("\n-------------------");
