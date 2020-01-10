@@ -37,5 +37,17 @@ namespace MyCoffee.Data
             }
             return _categories;
         }
+
+        public bool DoesCategoryExist(int id)
+        {
+            var category = _categories.FirstOrDefault((category) => category.Id == id);
+            if (category == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }
