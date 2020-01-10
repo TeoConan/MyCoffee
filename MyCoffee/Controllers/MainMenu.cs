@@ -133,6 +133,7 @@ namespace MyCoffee.Controllers
             Clear();
 
             //Product
+            var productsRepository = new ProductsRepository();
             List<Product> listProduct = new List<Product>
             {
                 new Product { CategoryId = 2, Name = "Panini Chelou", Description = "Contenu étrange de sucré-salé", Price = 5 },
@@ -151,7 +152,7 @@ namespace MyCoffee.Controllers
             foreach (Product aProduct in listProduct)
             {
                 Console.WriteLine($"Adding {aProduct.Name}");
-                Product.AddProduct(aProduct);
+                productsRepository.AddProduct(aProduct);
             }
 
             //One single customer test
