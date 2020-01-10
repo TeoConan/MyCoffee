@@ -9,7 +9,7 @@ namespace MyCoffee.Controllers
         public AddProduct()
         {
             Clear();
-            int id = AskForInteger("Id :");
+            int id = AskForInteger("Id du produit à créer :");
             Clear();
             int categoryId = AskForCategory();
             Clear();

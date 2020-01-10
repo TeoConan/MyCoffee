@@ -13,6 +13,7 @@ namespace MyCoffee.Controllers
 
         public MainMenu()
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             _summary = "";
             _summary += "1) Documentation\n";
             _summary += "2) Lister les produits\n";
