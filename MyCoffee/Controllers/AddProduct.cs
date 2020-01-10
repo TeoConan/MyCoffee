@@ -15,7 +15,7 @@ namespace MyCoffee.Controllers
             Clear();
             string name = AskForName();
             Clear();
-            string description = AskCommand("Description :");
+            string description = AskCommand("Description (optionnelle):");
             Clear();
             float price = AskForFloat("Entrez le prix (avec une virgule) :");
 
