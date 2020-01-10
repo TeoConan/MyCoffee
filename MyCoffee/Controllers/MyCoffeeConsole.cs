@@ -63,34 +63,43 @@ namespace MyCoffee.Controllers
             return AskKeyPress(defaultAskKeyPressMessage);
         }
 
-        private bool AskYesNo()
+        protected bool AskYesNo()
         {
-            bool correctAnswer = false;
-            bool answer = false;
+            bool result;
+            string userInput;
 
-            do
+            while (true)
             {
-                var Input = Console.ReadLine();
 
-                if (Input.Equals("oui")
-                    || Input.Equals("o")
-                    || Input.Equals("y")
-                    || Input.Equals("yes"))
+                userInput = Console.ReadLine();
+
+                switch (userInput)
                 {
-                    correctAnswer = true;
-                    answer = true;
+                    case "o":
+                    case "y":
+                    case "yes":
+                    case "oui":
+                    case "ok":
+                        return true;
+                        break;
+
+                    case "n":
+                    case "no":
+                    case "non":
+                    case "nope":
+                    case "ko":
+                    case "pshiit":
+                    case "salade":
+                    case "salad":
+                        return false;
+                        break;
+
+                    default:
+                        Echo("C'était une question oui/non.");
+                        break;
+
                 }
-
-                if (Input.Equals("non"))
-                {
-                    correctAnswer = true;
-                    answer = false;
-                }
-
-
-            } while (!correctAnswer);
-
-            return answer;
+            }
         }
 
         abstract protected void DecisionTree(string Input, bool DisplayMenu);

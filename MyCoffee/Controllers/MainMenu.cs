@@ -19,11 +19,11 @@ namespace MyCoffee.Controllers
             _summary += "3) Passer une commande\n";
             _summary += "4) Voir les dates courtes\n";
             _summary += "5) Lister par catégorie\n";
-            _summary += "6) Quitter\n";
+            _summary += "6) Ajouter un produit\n";
             _summary += "7) DEBUG - Ajouter produit test\n";
-            _summary += "8) DEBUG - Afficher le produit 5\n";
-            _summary += "9) DEBUG - Rechercher un produit par id ou nom\n";
-            _summary += "10) DEBUG - Créer un produit\n";
+            _summary += "8) Test\n";
+            _summary += "9) DEBUG - Afficher le produit 5\n";
+            _summary += "10) DEBUG - Rechercher un produit par id ou nom\n";
 
             Welcome();
             DisplayMainMenu();
@@ -62,25 +62,28 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "5":
-                    new ListByCategory();
+                    ListProductByCategory();
                     DisplayMainMenu();
                     break;
 
                 case "6":
-                    return;
+                    AddProduct();
+                    DisplayMainMenu();
                     break;
 
                 case "7":
                     generateData();
+                    return;
                     break;
+
                 case "8":
-                    DebugShowProduct();
+                    test();
                     break;
                 case "9":
-                    DebugSearchProduct();
+                    DebugShowProduct();
                     break;
                 case "10":
-                    DebugCreateProduct();
+                    DebugSearchProduct();
                     break;
 
                 default:
@@ -92,6 +95,28 @@ namespace MyCoffee.Controllers
             {
                 DisplayMainMenu();
             }
+        }
+
+        public void ListAllProducts()
+        {
+            Clear();
+            var mockProductRepository = new MockProductRepository();
+
+            var products = mockProductRepository.getAllProducts();
+            Echo("Liste des produits : \n");
+
+            foreach (Product product in products)
+            {
+                Console.WriteLine(product.Name + "\n");
+            }
+
+            AskKeyPress("Appuyez sur une touche pour revenir au menu.\n");
+            DisplayMainMenu();
+        }
+
+        public void ListProductByCategory()
+        {
+            var listByCategory = new ListByCategory();
         }
 
         private void test()
@@ -193,35 +218,10 @@ namespace MyCoffee.Controllers
             AskKeyPress();
         }
 
-        public void DebugCreateProduct()
+        public void AddProduct()
         {
-            Clear();
-            var id = AskCommand("Id :");
-
-            var mockCategoryRepository = new MockCategoryRepository();
-            var categories = mockCategoryRepository.GetAllCategories();
-
-            Echo("\nCATEGORIES\n----------");
-            foreach (var category in categories)
-            {
-                Echo(category.Id + ") " + category.Name);
-            }
-
-            var categoryId = AskCommand("\nId de la catégorie : ");
-            var name = AskCommand("Nom : ");
-            var description = AskCommand("Description :");
-            var price = AskCommand("Prix avec une virgule s'il vous plait : ");
-
-            var product = new Product { Id = int.Parse(id), CategoryId = int.Parse(categoryId), Name = name, Description = description, Price = float.Parse(price) };
-
-            var producViewer = new ProductViewer(product);
-            Echo("\n-------------------");
-            Echo("\n1) Valider l'ajout de produit.");
-            Echo("\n2) Annuler l'ajout de produit.\n");
-
-            AskCommand();
-
-            return;
+            var addProduct = new AddProduct();
         }
+
     }
 }

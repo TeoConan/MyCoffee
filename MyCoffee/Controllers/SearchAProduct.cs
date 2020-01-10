@@ -17,7 +17,6 @@ namespace MyCoffee.Controllers
         public void WaitForCommand()
         {
             Echo("Entrez un id ou un nom de produit : ");
-            var mockProductRepository = new MockProductRepository();
             Input = Console.ReadLine();
             int id;
             Product product;
@@ -28,9 +27,17 @@ namespace MyCoffee.Controllers
                 AskKeyPress();
             } else
             {
-                product = mockProductRepository.getProductByName(Input);
-                var productViewer = new ProductViewer(product);
-                AskKeyPress();
+                product = Product.getProductByName(Input);
+
+                if (product == null)
+                {
+                    Echo("Aucun produit trouvé.");
+                    AskKeyPress();
+                } else
+                {
+                    var productViewer = new ProductViewer(product);
+                    AskKeyPress();
+                }
             }
 
         }
