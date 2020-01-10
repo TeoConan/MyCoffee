@@ -8,13 +8,13 @@ namespace MyCoffee.Controllers
     {
         //SUMMARY :
         //This class covers functions used to display a single product.
-        //All product informations are listed.
+        //All product information are listed.
         //Returns to the previous menu when done.
 
         public ProductViewer()
         {
             Echo("Aucun produit à afficher");
-            WaitForKeyPress();
+            AskKeyPress();
         }
 
         public ProductViewer(int productId)
@@ -29,14 +29,14 @@ namespace MyCoffee.Controllers
             {
                 ShowProductProfile(product);
             }
-            //WaitForKeyPress();
+            //AskKeyPress();
         }
 
         public ProductViewer(Product product)
         {
             Clear();
             ShowProductProfile(product);
-            //WaitForKeyPress();
+            //AskKeyPress();
         }
 
         public void ShowProductProfile(Product product)
@@ -50,14 +50,6 @@ namespace MyCoffee.Controllers
             productDetails += "\n\nPrix : " + product.Price.ToString() + "€\n";
 
             Echo(productDetails);
-        }
-
-        public void WaitForKeyPress()
-        {
-            Echo("Appuyez sur une touche pour revenir au menu.\n");
-
-            Console.ReadKey();
-            Clear();
         }
 
         protected override void DecisionTree(string command, bool DisplayMenu)
