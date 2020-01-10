@@ -28,7 +28,7 @@ namespace MyCoffee.Data
         {
         }
 
-        public IEnumerable<Product> getAllProducts()
+        public List<Product> getAllProducts()
         {
             if (_products == null)
             {
@@ -37,7 +37,7 @@ namespace MyCoffee.Data
             return _products;
         }
 
-        public IEnumerable<Product> getProductsByCategory(int categoryId)
+        public List<Product> getProductsByCategory(int categoryId)
         {
 
             var products = _products.FindAll((product) => product.CategoryId == categoryId);
@@ -48,7 +48,7 @@ namespace MyCoffee.Data
             return products;
         }
 
-        public IEnumerable<Product> getProductsByName(string name)
+        public List<Product> getProductsByName(string name)
         {
             var products = _products.FindAll((product) => product.Name.Contains(name));
             if (products == null)

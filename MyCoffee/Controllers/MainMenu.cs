@@ -25,6 +25,7 @@ namespace MyCoffee.Controllers
             _summary += "8) Test\n";
             _summary += "9) DEBUG - Afficher le produit 5\n";
             _summary += "10) DEBUG - Rechercher un produit par id ou nom\n";
+            _summary += "11) DEBUG - Afficher tous les produits\n";
 
             Welcome();
             DisplayMainMenu();
@@ -85,6 +86,10 @@ namespace MyCoffee.Controllers
                     break;
                 case "10":
                     DebugSearchProduct();
+                    break;
+
+                case "11":
+                    DebugListAllProducts();
                     break;
 
                 default:
@@ -222,6 +227,14 @@ namespace MyCoffee.Controllers
         public void AddProduct()
         {
             var addProduct = new AddProduct();
+        }
+
+        public void DebugListAllProducts()
+        {
+            MockProductRepository mockProductRepository = new MockProductRepository();
+            List<Product> products = mockProductRepository.getAllProducts();
+
+            ProductBrowser productBrowser = new ProductBrowser(products);
         }
 
     }
