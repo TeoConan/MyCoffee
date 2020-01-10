@@ -13,7 +13,7 @@ namespace MyCoffee.Controllers
             Clear();
             int categoryId = AskForCategory();
             Clear();
-            string name = AskCommand("Nom : ");
+            string name = AskForName();
             Clear();
             string description = AskCommand("Description :");
             Clear();
@@ -37,6 +37,26 @@ namespace MyCoffee.Controllers
 
         }
 
+        public string AskForName()
+        {
+            var entryValidated = false;
+            string command = "";
+
+            while (!entryValidated)
+            {
+                command = AskCommand("Nom : ");
+                if (command.Length < 3)
+                {
+                    Echo("\nLe nom du produit doit faire au moins 3 caractères");
+                } else
+                {
+                    entryValidated = true;
+                }
+            }
+
+            return command;
+        }
+
         public int AskForInteger(string message)
         {
             var entryValidated = false;
@@ -50,7 +70,6 @@ namespace MyCoffee.Controllers
                 if (!entryValidated)
                 {
                     Echo("\nLa valeur entrée doit être un nombre entier");
-                    AskKeyPress();
                 }
 
             }
@@ -99,8 +118,6 @@ namespace MyCoffee.Controllers
 
         public bool ValidateProduct(Product product)
         {
-            string entry;
-            bool productChecked = false;
 
             var producViewer = new ProductViewer(product);
             Echo("\n-------------------");
