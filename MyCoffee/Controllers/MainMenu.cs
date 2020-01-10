@@ -13,18 +13,18 @@ namespace MyCoffee.Controllers
 
         public MainMenu()
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
             _summary = "";
             _summary += "1) Documentation\n";
             _summary += "2) Lister les produits\n";
             _summary += "3) Passer une commande\n";
             _summary += "4) Voir les dates courtes\n";
             _summary += "5) Lister par catégorie\n";
-            _summary += "6) Quitter\n";
-            _summary += "7) Test\n";
-            _summary += "8) DEBUG - Afficher le produit 5\n";
-            _summary += "9) DEBUG - Rechercher un produit par id ou nom\n";
-            _summary += "10) DEBUG - Créer un produit\n";
+            _summary += "6) Ajouter un produit\n";
+            _summary += "7) Quitter\n";
+            _summary += "8) Test\n";
+            _summary += "9) DEBUG - Afficher le produit 5\n";
+            _summary += "10) DEBUG - Rechercher un produit par id ou nom\n";
+            _summary += "11) DEBUG - Créer un produit\n";
 
             Welcome();
             DisplayMainMenu();
@@ -63,24 +63,29 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "5":
-                    new ListByCategory();
+                    ListProductByCategory();
                     DisplayMainMenu();
                     break;
 
                 case "6":
-                    return;
+                    AddProduct();
+                    DisplayMainMenu();
                     break;
 
                 case "7":
+                    return;
+                    break;
+
+                case "8":
                     test();
                     break;
-                case "8":
+                case "9":
                     DebugShowProduct();
                     break;
-                case "9":
+                case "10":
                     DebugSearchProduct();
                     break;
-                case "10":
+                case "11":
                     DebugCreateProduct();
                     break;
 
@@ -93,6 +98,28 @@ namespace MyCoffee.Controllers
             {
                 DisplayMainMenu();
             }
+        }
+
+        public void ListAllProducts()
+        {
+            Clear();
+            var mockProductRepository = new MockProductRepository();
+
+            var products = mockProductRepository.getAllProducts();
+            Echo("Liste des produits : \n");
+
+            foreach (Product product in products)
+            {
+                Console.WriteLine(product.Name + "\n");
+            }
+
+            AskKeyPress("Appuyez sur une touche pour revenir au menu.\n");
+            DisplayMainMenu();
+        }
+
+        public void ListProductByCategory()
+        {
+            var listByCategory = new ListByCategory();
         }
 
         private void test()
@@ -110,6 +137,11 @@ namespace MyCoffee.Controllers
         {
             var productViewer = new ProductViewer(5);
             AskKeyPress();
+        }
+
+        public void AddProduct()
+        {
+            var addProduct = new AddProduct();
         }
 
         public void DebugCreateProduct()
@@ -137,6 +169,7 @@ namespace MyCoffee.Controllers
             Echo("\n-------------------");
             Echo("\n1) Valider l'ajout de produit.");
             Echo("\n2) Annuler l'ajout de produit.\n");
+
             AskCommand();
 
             return;
