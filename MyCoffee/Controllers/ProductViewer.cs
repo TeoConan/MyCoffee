@@ -13,8 +13,8 @@ namespace MyCoffee.Controllers
 
         public ProductViewer()
         {
-            Echo("Aucun produit à afficher");
-            AskKeyPress();
+            //Echo("Aucun produit à afficher");
+            //AskKeyPress();
         }
 
         public ProductViewer(int productId)

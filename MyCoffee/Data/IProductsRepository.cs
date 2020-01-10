@@ -6,11 +6,11 @@ namespace MyCoffee.Data
 {
     public interface IProductsRepository
     {
-		IEnumerable<Product> getAllProducts();
+		List<Product> getAllProducts();
 
-        IEnumerable<Product> getProductsByName(string name);
+        List<Product> getProductsByName(string name);
 
-		IEnumerable<Product> getProductsByCategory(int categoryId);
+		List<Product> getProductsByCategory(int categoryId);
 
 		Product getProductById(int id);
     }
