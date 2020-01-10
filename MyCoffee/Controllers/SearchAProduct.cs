@@ -27,7 +27,8 @@ namespace MyCoffee.Controllers
                 AskKeyPress();
             } else
             {
-                product = Product.getProductByName(Input);
+                ProductsRepository productsRepository = new ProductsRepository();
+                product = productsRepository.getProductByName(Input);
 
                 if (product == null)
                 {

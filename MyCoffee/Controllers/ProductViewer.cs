@@ -20,8 +20,8 @@ namespace MyCoffee.Controllers
         public ProductViewer(int productId)
         {
             Clear();
-
-            var product = Product.getProductById(productId);
+            ProductsRepository productsRepository = new ProductsRepository();
+            var product = productsRepository.getProductById(productId);
             if (product == null)
             {
                 Echo("Aucun produit trouvé.\n");

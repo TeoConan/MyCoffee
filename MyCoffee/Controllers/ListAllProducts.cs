@@ -18,7 +18,8 @@ namespace MyCoffee.Controllers
         public void DisplayProducts()
         {
             Console.WriteLine("Chargement...");
-            var listProduct = Product.GetAllProducts();
+            ProductsRepository productsRepository = new ProductsRepository();
+            var listProduct = productsRepository.GetAllProducts();
 
             Clear();
             Echo("Liste des produits : \n");
