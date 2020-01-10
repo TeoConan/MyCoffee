@@ -234,7 +234,8 @@ namespace MyCoffee.Controllers
             MockProductRepository mockProductRepository = new MockProductRepository();
             List<Product> products = mockProductRepository.getAllProducts();
 
-            ProductBrowser productBrowser = new ProductBrowser(products);
+            ProductBrowser productBrowser = new ProductBrowser();
+            productBrowser.BrowseListOfProducts(products);
         }
 
     }

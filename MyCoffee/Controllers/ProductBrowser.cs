@@ -10,13 +10,55 @@ namespace MyCoffee.Controllers
         {
         }
 
-        public ProductBrowser(List<Product> products)
+        public void BrowseListOfProducts(List<Product> products)
         {
-            Clear();
-            ShowListOfProducts(products);
+            ProductViewer productViewer = new ProductViewer();
+
+            int cursor = 0;
+            string entry;
+
+            int cursorMinimum = 0;
+            int cursorMaximum = products.Count - 1;
+
+            bool isBrowsing = true;
+
+            while (isBrowsing)
+            {
+                Clear();
+                productViewer.ShowProductProfile(products[cursor]);
+                Echo("----------------");
+                Echo("Produit " + (cursor + 1) + "/" + (cursorMaximum + 1));
+                Echo("[p]récédent, [s]uivant, [q]uitter\n");
+
+                entry = AskCommand();
+
+                switch (entry)
+                {
+                    case "p":
+                    case "précédent":
+                        if (cursorMinimum < cursor)
+                        {
+                            cursor = cursor - 1;
+                        }
+                        break;
+
+                    case "s":
+                    case "suivant":
+                        if (cursor < cursorMaximum)
+                        {
+                            cursor = cursor + 1;
+                        }
+                        break;
+
+                    case "q":
+                        isBrowsing = false;
+                        break;
+
+                }
+            }
         }
 
-        public Product ShowListOfProducts(List<Product> products)
+        public Product SelectFromListOfProducts(List<Product> products)
         {
             ProductViewer productViewer = new ProductViewer();
 
