@@ -13,6 +13,7 @@ namespace MyCoffee.Controllers
 
         public MainMenu()
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             _summary = "";
             _summary += "1) Documentation\n";
             _summary += "2) Lister les produits\n";
@@ -97,7 +98,7 @@ namespace MyCoffee.Controllers
         private void test()
         {
             //var explorer = new Explorer();
-            //var test = new Test();
+            var test = new Test();
         }
 
         public void DebugSearchProduct()
@@ -136,7 +137,6 @@ namespace MyCoffee.Controllers
             Echo("\n-------------------");
             Echo("\n1) Valider l'ajout de produit.");
             Echo("\n2) Annuler l'ajout de produit.\n");
-
             AskCommand();
 
             return;
