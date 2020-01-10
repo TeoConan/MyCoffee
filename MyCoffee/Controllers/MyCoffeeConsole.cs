@@ -73,7 +73,7 @@ namespace MyCoffee.Controllers
 
                 userInput = Console.ReadLine();
 
-                switch (userInput)
+                switch (userInput.ToLower())
                 {
                     case "o":
                     case "y":

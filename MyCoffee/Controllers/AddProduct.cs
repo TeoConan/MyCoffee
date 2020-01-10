@@ -9,13 +9,13 @@ namespace MyCoffee.Controllers
         public AddProduct()
         {
             Clear();
-            int id = AskForInteger("Id :");
+            int id = AskForInteger("Id du produit à créer :");
             Clear();
             int categoryId = AskForCategory();
             Clear();
-            string name = AskCommand("Nom : ");
+            string name = AskForName();
             Clear();
-            string description = AskCommand("Description :");
+            string description = AskCommand("Description (optionnelle):");
             Clear();
             float price = AskForFloat("Entrez le prix (avec une virgule) :");
 
@@ -37,6 +37,26 @@ namespace MyCoffee.Controllers
 
         }
 
+        public string AskForName()
+        {
+            var entryValidated = false;
+            string command = "";
+
+            while (!entryValidated)
+            {
+                command = AskCommand("Nom : ");
+                if (command.Length < 3)
+                {
+                    Echo("\nLe nom du produit doit faire au moins 3 caractères");
+                } else
+                {
+                    entryValidated = true;
+                }
+            }
+
+            return command;
+        }
+
         public int AskForInteger(string message)
         {
             var entryValidated = false;
@@ -50,7 +70,6 @@ namespace MyCoffee.Controllers
                 if (!entryValidated)
                 {
                     Echo("\nLa valeur entrée doit être un nombre entier");
-                    AskKeyPress();
                 }
 
             }
@@ -71,7 +90,6 @@ namespace MyCoffee.Controllers
                 if (!entryValidated)
                 {
                     Echo("\nLa valeur entrée doit être un nombre décimal.\n Exemple : 16 ou 25,67.");
-                    AskKeyPress();
                 }
 
             }
@@ -81,7 +99,7 @@ namespace MyCoffee.Controllers
 
         public int AskForCategory()
         {
-            int result = 0;
+            int command = 0;
 
             var mockCategoryRepository = new MockCategoryRepository();
             var categories = mockCategoryRepository.GetAllCategories();
@@ -92,19 +110,28 @@ namespace MyCoffee.Controllers
                 Echo(category.Id + ") " + category.Name);
             }
 
-            result = AskForInteger("\nEntrez l'id de la catégorie souhaitée");
+            var entryValidated = false;
 
-            return result;
+            while (!entryValidated)
+            {
+                command = AskForInteger("\nEntrez l'id de la catégorie souhaitée");
+                if ( mockCategoryRepository.DoesCategoryExist(command))
+                {
+                    entryValidated = true;
+                }
+
+                Echo("\nImpossible de trouver une catégorie correspondant à l'id mentionné.");
+            }
+
+            return command;
         }
 
         public bool ValidateProduct(Product product)
         {
-            string entry;
-            bool productChecked = false;
 
             var producViewer = new ProductViewer(product);
             Echo("\n-------------------");
-            Echo("\nConfirmez vous l'enregistrement de ce produit ?");
+            Echo("\nConfirmez vous l'enregistrement de ce produit ? [oui/non]");
 
             return AskYesNo();
 
