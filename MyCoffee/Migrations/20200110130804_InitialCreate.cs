@@ -12,7 +12,7 @@ namespace MyCoffee.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     TimeCreate = table.Column<int>(nullable: false),
                     TimeUpdate = table.Column<int>(nullable: false),
                     TimeDelete = table.Column<int>(nullable: false)
@@ -23,12 +23,13 @@ namespace MyCoffee.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OderLine",
+                name: "OrderLine",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ProductId = table.Column<int>(nullable: false),
+                    OrderId = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     TimeCreate = table.Column<int>(nullable: false),
                     TimeUpdate = table.Column<int>(nullable: false),
@@ -36,7 +37,7 @@ namespace MyCoffee.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OderLine", x => x.Id);
+                    table.PrimaryKey("PK_OrderLine", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -80,28 +81,31 @@ namespace MyCoffee.Migrations
                 name: "CustomerOrder",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    CustomerId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<int>(nullable: false),
+                    TotalPrice = table.Column<float>(nullable: false),
                     TimeCreate = table.Column<int>(nullable: false),
                     TimeUpdate = table.Column<int>(nullable: false),
                     TimeDelete = table.Column<int>(nullable: false),
-                    CustomerId = table.Column<int>(nullable: true)
+                    CustomerId1 = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerOrder", x => x.Id);
+                    table.PrimaryKey("PK_CustomerOrder", x => x.CustomerId);
+                    table.UniqueConstraint("AK_CustomerOrder_Id", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CustomerOrder_Customer_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_CustomerOrder_Customer_CustomerId1",
+                        column: x => x.CustomerId1,
                         principalTable: "Customer",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerOrder_CustomerId",
+                name: "IX_CustomerOrder_CustomerId1",
                 table: "CustomerOrder",
-                column: "CustomerId");
+                column: "CustomerId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -110,7 +114,7 @@ namespace MyCoffee.Migrations
                 name: "CustomerOrder");
 
             migrationBuilder.DropTable(
-                name: "OderLine");
+                name: "OrderLine");
 
             migrationBuilder.DropTable(
                 name: "Product");

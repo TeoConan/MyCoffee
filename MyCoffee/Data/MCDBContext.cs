@@ -26,6 +26,30 @@ namespace MyCoffee.Data
             productBuilder.Property(p => p.Price).IsRequired();
             productBuilder.Property(p => p.CategoryId).IsRequired();
 
+            //Customer
+            var customerBuilder = modelBuilder.Entity<Customer>();
+            customerBuilder.HasKey(p => p.Id);
+            customerBuilder.Property(p => p.Name).IsRequired();
+
+            //CustomerOrder
+            var customerOrderBuilder = modelBuilder.Entity<CustomerOrder>();
+            customerOrderBuilder.HasKey(p => p.Id);
+            customerOrderBuilder.HasKey(p => p.CustomerId);
+            customerOrderBuilder.Property(p => p.TotalPrice).IsRequired();
+
+            //OrderLine
+            var orderLineBuilder = modelBuilder.Entity<OrderLine>();
+            orderLineBuilder.HasKey(p => p.Id);
+            orderLineBuilder.Property(p => p.ProductId).IsRequired();
+            orderLineBuilder.Property(p => p.OrderId).IsRequired();
+            orderLineBuilder.Property(p => p.Quantity).IsRequired();
+
+            //Stock
+            var stockBuiler = modelBuilder.Entity<Stock>();
+            stockBuiler.HasKey(p => p.Id);
+            stockBuiler.Property(p => p.ProductId).IsRequired();
+            stockBuiler.Property(p => p.Quantity).IsRequired();
+            stockBuiler.Property(p => p.Expiry).IsRequired();
         }
 
         public DbSet<Customer> Customer { get; set; }

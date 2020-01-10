@@ -13,12 +13,12 @@ namespace MyCoffee.Entities
             //Orders = new List<Order>();
         }
 
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public List<CustomerOrder> Orders { get; set; }
-        public int TimeCreate { private set; get; }
-        public int TimeUpdate { private set; get; }
-        public int TimeDelete { private set; get; }
+        public int TimeCreate { set; get; }
+        public int TimeUpdate { set; get; }
+        public int TimeDelete { set; get; }
 
 
         public static bool AddCustomer(Customer customer)

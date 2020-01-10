@@ -11,6 +11,7 @@ namespace MyCoffee.Entities
         [Key]
         public int Id { get; private set; }
         public int ProductId { get; set; }
+        public int OrderId { get; set; }
         public int Quantity { get; set; }
         private float Price { get; }
 
