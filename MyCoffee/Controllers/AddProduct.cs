@@ -131,7 +131,7 @@ namespace MyCoffee.Controllers
 
             var producViewer = new ProductViewer(product);
             Echo("\n-------------------");
-            Echo("\nConfirmez vous l'enregistrement de ce produit ?");
+            Echo("\nConfirmez vous l'enregistrement de ce produit ? [oui/non]");
 
             return AskYesNo();
 
