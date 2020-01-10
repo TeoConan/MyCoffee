@@ -88,6 +88,9 @@ namespace MyCoffee.Controllers
                     case "non":
                     case "nope":
                     case "ko":
+                    case "pshiit":
+                    case "salade":
+                    case "salad":
                         return false;
                         break;
 

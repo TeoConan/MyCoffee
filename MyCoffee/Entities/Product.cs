@@ -67,11 +67,9 @@ namespace MyCoffee.Entities
         public static Product getProductByName(string name)
         {
             var listProducts = Product.GetAllProducts();
+
             var product = listProducts.Find(product => product.Name.ToLower().Contains(name.ToLower()));
-            if (product == null)
-            {
-                return null;
-            }
+
             return product;
         }
     }

@@ -28,8 +28,16 @@ namespace MyCoffee.Controllers
             } else
             {
                 product = Product.getProductByName(Input);
-                var productViewer = new ProductViewer(product);
-                AskKeyPress();
+
+                if (product == null)
+                {
+                    Echo("Aucun produit trouvé.");
+                    AskKeyPress();
+                } else
+                {
+                    var productViewer = new ProductViewer(product);
+                    AskKeyPress();
+                }
             }
 
         }
