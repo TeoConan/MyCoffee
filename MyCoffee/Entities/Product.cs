@@ -72,5 +72,14 @@ namespace MyCoffee.Entities
 
             return product;
         }
+
+        public static List<Product> getProductsByName(string name)
+        {
+            var listProducts = Product.GetAllProducts();
+
+            var products = listProducts.FindAll((product) => product.Name.Contains(name));
+
+            return products;
+        }
     }
 }
