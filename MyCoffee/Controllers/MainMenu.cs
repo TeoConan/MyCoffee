@@ -152,56 +152,38 @@ namespace MyCoffee.Controllers
                 Console.WriteLine($"Adding {aProduct.Name}");
                 Product.AddProduct(aProduct);
             }
-            
-            //CustomerOrder & Customer
-            Random random = new Random();
-            List<String> customerNames = new List<String>
+
+            //One single customer test
+
+            Customer c1 = new Customer()
             {
-                "Eva", "Vincent", "Téo", "Alex", "Hugo", "Etienne", "Thomas"
+                Id = 1,
+                Name = "Amir",
+                Orders = new List<CustomerOrder> {
+                    new CustomerOrder()
+                    {
+                        Id = 1,
+                        TotalPrice = 4f,
+                        CustomerId = 1,
+                        Lines = new List<OrderLine> {
+                            new OrderLine() {
+                                Id = 1,
+                                ProductId = 1,
+                                OrderId = 1,
+                                Quantity = 1,
+                                Price = 2f
+                            },
+                        },
+                        TimeCreate = 1578665721,
+                        TimeUpdate = 0,
+                        TimeDelete = 0
+                    },
+                },
+                TimeCreate = 1578665721,
+                TimeUpdate = 0,
+                TimeDelete = 0,
+
             };
-            int numberUsers = random.Next(3, customerNames.Count());
-            List<Customer> listCustomers = new List<Customer>();
-
-            Console.WriteLine($"Adding {numberUsers} new users");
-            for (int i = 0; i < numberUsers; i++)
-            {
-                int numberOrder = random.Next(1, 5);
-                long timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-                int timeCreate = Convert.ToInt32(timestamp);
-
-                List<CustomerOrder> listCustomerOrder = new List<CustomerOrder>();
-                
-                for (int i2 = 0; i2 < numberOrder; i2++)
-                {
-                    var customerOrder = new CustomerOrder {
-                        Id = i2,
-                        TotalPrice = (random.Next(1, 25)),
-                        TimeCreate = timeCreate,
-                        TimeDelete = 0,
-                        TimeUpdate = 0
-                    };
-
-                    CustomerOrder.AddCustomerOrder(customerOrder);
-                    listCustomerOrder.Add(customerOrder);
-                }
-
-                var customer = new Customer
-                {
-                    Id = i,
-                    Name = customerNames[i],
-                    TimeCreate = timeCreate,
-                    TimeDelete = 0,
-                    TimeUpdate = 0
-                };
-
-                listCustomers.Add(customer);
-            }
-
-            foreach (Customer customer in listCustomers)
-            {
-                Console.WriteLine($"Adding {customer.Name}");
-                Customer.AddCustomer(customer);
-            }
 
             Console.WriteLine("End");
             AskKeyPress();
