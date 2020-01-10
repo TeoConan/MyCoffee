@@ -104,35 +104,9 @@ namespace MyCoffee.Controllers
 
             var producViewer = new ProductViewer(product);
             Echo("\n-------------------");
-            Echo("\n1) Valider l'ajout de produit.");
-            Echo("\n2) Annuler l'ajout de produit.\n");
+            Echo("\nConfirmez vous l'enregistrement de ce produit ?");
 
-            while (!productChecked)
-            {
-                entry = AskCommand();
-                switch (entry)
-                {
-                    case "1":
-                    case "y":
-                    case "yes":
-                    case "oui":
-                        return true;
-                        break;
-
-                    case "2":
-                    case "n":
-                    case "no":
-                    case "non":
-                        return false;
-                        break;
-
-                    default:
-                        break;
-
-                }
-            }
-
-            return true;
+            return AskYesNo();
 
         }
 
