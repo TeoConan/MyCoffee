@@ -24,8 +24,8 @@ namespace MyCoffee.Controllers
 
             if (int.TryParse(Input, out id))
             {
-               /* var productBrowser = new ProductBrowser(id);
-                AskKeyPress();*/
+                var productViewer = new ProductViewer(id);
+                AskKeyPress();
             } else
             {
                 ProductsRepository productsRepository = new ProductsRepository();
@@ -39,7 +39,6 @@ namespace MyCoffee.Controllers
                 {
                     var productBrowser = new ProductBrowser();
                     productBrowser.BrowseListOfProducts(products);
-                    AskKeyPress();
                 }
             }
 

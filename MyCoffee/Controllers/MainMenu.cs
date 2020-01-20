@@ -26,6 +26,7 @@ namespace MyCoffee.Controllers
             _summary += "9) DEBUG - Afficher le produit 5\n";
             _summary += "10) DEBUG - Rechercher un produit par id ou nom\n";
             _summary += "11) DEBUG - Afficher tous les produits\n";
+            _summary += "12) DEBUG - Passer une commande\n";
 
             Welcome();
             DisplayMainMenu();
@@ -91,6 +92,10 @@ namespace MyCoffee.Controllers
 
                 case "11":
                     DebugListAllProducts();
+                    break;
+
+                case "12":
+                    CreateAnOrder();
                     break;
 
                 default:
@@ -225,5 +230,9 @@ namespace MyCoffee.Controllers
             productBrowser.BrowseListOfProducts(products);
         }
 
+        public void CreateAnOrder()
+        {
+
+        }
     }
 }
