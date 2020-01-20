@@ -11,6 +11,7 @@ namespace MyCoffee.Controllers
 
         public CreateAnOrder()
         {
+            Cart = new List<Product>();
             _summary = "1) Ajouter un produit par nom ou id\n";
             _summary += "2) Ajouter un produit par catégorie\n";
             _summary += "3) Retirer un produit\n";
@@ -22,9 +23,28 @@ namespace MyCoffee.Controllers
 
         public void SelectAProduct()
         {
-            var searchAProduct = new SearchAProduct();            
-            Cart.Add(searchAProduct.SelectAProduct());
+            var searchAProduct = new SearchAProduct();
+            var product = searchAProduct.SelectAProduct();
+            if (product != null)
+            {
+                Cart.Add(product);
+            }
+            
+            DisplayMainMenu();
 
+        }
+
+        public void SelectAProductByCategory()
+        {
+            var selectByCategory = new SelectByCategory();
+            var product = selectByCategory.SelectProductByCategory();
+
+            if (product != null)
+            {
+                Cart.Add(product);
+            }
+
+            DisplayMainMenu();
         }
 
         protected override void DisplayMainMenu()
@@ -50,6 +70,7 @@ namespace MyCoffee.Controllers
                     SelectAProduct();
                     break;
                 case "2":
+                    SelectAProductByCategory();
                     break;
                 case "3":
 
@@ -69,10 +90,12 @@ namespace MyCoffee.Controllers
 
         public void DisplayCart()
         {
+            Echo("Contenu du panier :");
             foreach (Product product in Cart)
             {
-                Echo ("\n" + product.Name);
+                Echo ("- " + product.Name);
             }
+            Echo("\n");
         }
     }
 }
