@@ -23,11 +23,11 @@ namespace MyCoffee.Controllers
 
             Clear();
             Echo("Liste des produits : \n");
-            Echo("Id | CategoryId | Name | Description | Price | Create | Update | Delete");
 
+            PrintTableHeader(true, "Id", "CategoryId", "Name", "Description", "Price");
             foreach (Product aProduct in listProduct)
             {
-                Console.WriteLine($"{aProduct.Id} | {aProduct.CategoryId} | {aProduct.Name} | {aProduct.Description} | {aProduct.Price} | {aProduct.TimeCreate} |  {aProduct.TimeUpdate} | {aProduct.TimeDelete}");
+                PrintLineCells(true, $"{aProduct.Id}", $"{aProduct.CategoryId}", aProduct.Name, aProduct.Description, $"{aProduct.Price}");
             }
         }
 

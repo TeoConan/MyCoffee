@@ -26,6 +26,7 @@ namespace MyCoffee.Controllers
             _summary += "9) DEBUG - Afficher le produit 5\n";
             _summary += "10) DEBUG - Rechercher un produit par id ou nom\n";
             _summary += "11) DEBUG - Afficher tous les produits\n";
+            _summary += "12) DEBUG - Test table\n";
 
             Welcome();
             DisplayMainMenu();
@@ -208,6 +209,15 @@ namespace MyCoffee.Controllers
         public void DebugShowProduct()
         {
             var productViewer = new ProductViewer(5);
+            AskKeyPress();
+        }
+
+        public void DebugTable()
+        {
+            Clear();
+            PrintTableHeader(true, "Col1", "Col2", "Col3");
+            PrintLineCells(true, "Text1", "Text2", "Text3");
+
             AskKeyPress();
         }
 

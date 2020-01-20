@@ -8,6 +8,88 @@ namespace MyCoffee.Controllers
         protected string _summary;
         public string defautlAskCommandMessage { get; set; }
         public string defaultAskKeyPressMessage { get; set; }
+        public int tableWidth = 80;
+
+        public string PrintLine()
+        {
+            return(new string('-', tableWidth));
+        }
+
+        public string PrintRow(bool alignText, params string[] columns)
+        {
+            int width = (tableWidth - columns.Length) / columns.Length;
+            string row = "|";
+
+            if (alignText)
+            {
+                foreach (string column in columns)
+                {
+                    row += AlignText(true, column, width) + "|";
+                }
+            } else
+            {
+                foreach (string column in columns)
+                {
+                    row += (column, width) + "|";
+                }
+            }
+            
+
+            return row;
+        }
+
+        public string AlignText(bool center, string text, int width)
+        {
+            text = text.Length > width ? text.Substring(0, width - 3) + "..." : text;
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return new string(' ', width);
+            }
+            else
+            {
+                if (center)
+                {
+                    return text.PadRight(width - (width - text.Length) / 2).PadLeft(width);
+                } else
+                {
+                    return text.PadRight(width - (width - text.Length) / 2).PadRight(width);
+                }
+                
+            }
+        }
+
+        public string PrintTableHeader(bool print = true, params string[] colums)
+        {
+            string output = "";
+            output += (PrintLine() + "\n");
+            output += PrintRow(true, colums) + "\n";
+            output += (PrintLine());
+
+            if (print)
+            {
+                Console.WriteLine(output);
+            }
+
+            return output;
+        }
+
+        public string PrintLineCells(bool print = true, params string[] cells)
+        {
+            int width = (tableWidth - cells.Length) / cells.Length;
+            string row = "|";
+            foreach (string column in cells)
+            {
+                row += AlignText(false, column, width) + "|";
+            }
+
+            if (print)
+            {
+                Console.WriteLine(row);
+            }
+
+            return row;
+        }
 
         public MyCoffeeConsole()
         {
