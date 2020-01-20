@@ -8,7 +8,7 @@ namespace MyCoffee.Controllers
         protected string _summary;
         public string defautlAskCommandMessage { get; set; }
         public string defaultAskKeyPressMessage { get; set; }
-        public int tableWidth = 80;
+        public int tableWidth = 100;
 
         public string PrintLine()
         {
@@ -40,6 +40,7 @@ namespace MyCoffee.Controllers
 
         public string AlignText(bool center, string text, int width)
         {
+            string output = "";
             text = text.Length > width ? text.Substring(0, width - 3) + "..." : text;
 
             if (string.IsNullOrEmpty(text))
@@ -48,12 +49,13 @@ namespace MyCoffee.Controllers
             }
             else
             {
+                output = text.PadRight(width - (width - text.Length) / 2);
                 if (center)
                 {
-                    return text.PadRight(width - (width - text.Length) / 2).PadLeft(width);
+                    return output.PadLeft(width);
                 } else
                 {
-                    return text.PadRight(width - (width - text.Length) / 2).PadRight(width);
+                    return output.PadRight(width);
                 }
                 
             }
