@@ -11,9 +11,14 @@ namespace MyCoffee.Controllers
         public ListByCategory()
         {
             _summary = "";
-            _summary += "0) Menu principal\n";
             _summary += "1) Sandwich\n";
             _summary += "2) Viennoiserie\n";
+            _summary += "3) Salades\n";
+            _summary += "4) Boissons\n";
+            _summary += "5) Snacks\n";
+            _summary += "6) Lunch boxes\n";
+            _summary += "\n[q]uitter\n";
+
 
             DisplayMainMenu();
         }
@@ -26,10 +31,9 @@ namespace MyCoffee.Controllers
             var products = mockProductRepository.getProductsByCategory(categoryId);
             Console.WriteLine("Liste des produits de la catégorie : " + category + "\n");
 
-            foreach (Product product in products)
-            {
-                Console.WriteLine(product.Name + "\n");
-            }
+            var productBrowser = new ProductBrowser();
+            productBrowser.BrowseListOfProducts(products);
+
         }
 
         public void WaitForKeyPress()
@@ -39,24 +43,31 @@ namespace MyCoffee.Controllers
 
         protected override void DecisionTree(string Input, bool DisplayMenu)
         {
-            switch (Input)
+            switch (Input.ToLower())
             {
-                case "0":
+                case "q":
                     return;
                 case "1":
                     ListProducts(2, "Sandwiches");
-                    WaitForKeyPress();
                     break;
                 case "2":
                     ListProducts(1, "Viennoiseries");
-                    WaitForKeyPress();
                     break;
                 case "3":
+                    ListProducts(3, "Salades");
+                    break;
+                case "4":
+                    ListProducts(4, "Boissons");
+                    break;
+                case "5":
+                    ListProducts(5, "Snacks");
+                    break;
+                case "6":
+                    ListProducts(6, "Lunch boxes");
                     break;
                 default:
                     DecisionTree(AskCommand(), DisplayMenu);
                     break;
-
             }
 
             if (DisplayMenu)

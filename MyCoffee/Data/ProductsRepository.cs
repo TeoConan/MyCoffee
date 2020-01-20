@@ -59,7 +59,7 @@ namespace MyCoffee.Data
         {
             var listProducts = this.GetAllProducts();
 
-            var products = listProducts.FindAll((product) => product.Name.Contains(name));
+            var products = listProducts.FindAll((product) => product.Name.ToLower().Contains(name.ToLower()));
 
             return products;
         }
