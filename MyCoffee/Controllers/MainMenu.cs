@@ -75,6 +75,7 @@ namespace MyCoffee.Controllers
 
                 case "7":
                     generateData();
+                    DisplayMainMenu();
                     return;
                     break;
 
