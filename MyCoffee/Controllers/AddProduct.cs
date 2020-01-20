@@ -9,8 +9,6 @@ namespace MyCoffee.Controllers
         public AddProduct()
         {
             Clear();
-            int id = AskForInteger("Id du produit à créer :");
-            Clear();
             int categoryId = AskForCategory();
             Clear();
             string name = AskForName();
@@ -19,13 +17,27 @@ namespace MyCoffee.Controllers
             Clear();
             float price = AskForFloat("Entrez le prix (avec une virgule) :");
 
-            var product = new Product { Id = id, CategoryId = categoryId, Name = name, Description = description, Price = price };
+            var product = new Product { CategoryId = categoryId, Name = name, Description = description, Price = price };
 
             bool isProductValidated = ValidateProduct(product);
 
             if (isProductValidated)
             {
                 Clear();
+                Echo("Ajout du produit en base...");
+                ProductsRepository productsRepository = new ProductsRepository();
+                try
+                {
+                    productsRepository.AddProduct(product);
+                } catch (Exception e)
+                {
+                    Echo("Impossible d'ajouter le produit en base");
+                    Echo("Message d'erreur");
+                    Echo(e.Message);
+                    AskKeyPress();
+                    return;
+                }
+                
                 Echo("Le produit a bien été créé.");
                 AskKeyPress();
             } else
@@ -34,7 +46,6 @@ namespace MyCoffee.Controllers
                 Echo("La création de produit a été annulée.");
                 AskKeyPress();
             }
-
         }
 
         public string AskForName()
