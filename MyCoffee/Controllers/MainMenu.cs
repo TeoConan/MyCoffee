@@ -192,6 +192,9 @@ namespace MyCoffee.Controllers
 
             };
 
+            CustomerRepository customerRepository = new CustomerRepository();
+            customerRepository.AddCustomer(c1);
+
             Console.WriteLine("End");
             AskKeyPress();
         }

@@ -9,11 +9,11 @@ namespace MyCoffee.Entities
     public class OrderLine
     {
         [Key]
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public int ProductId { get; set; }
         public int OrderId { get; set; }
         public int Quantity { get; set; }
-        private float Price { get; }
+        public float Price { get; set;  }
 
         public int TimeCreate { private set; get; }
         public int TimeUpdate { private set; get; }

@@ -8,7 +8,7 @@ using MyCoffee.Data;
 namespace MyCoffee.Migrations
 {
     [DbContext(typeof(MCDBContext))]
-    [Migration("20200110130804_InitialCreate")]
+    [Migration("20200120085436_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,14 +43,11 @@ namespace MyCoffee.Migrations
 
             modelBuilder.Entity("MyCoffee.Entities.CustomerOrder", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CustomerId1")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Id")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("TimeCreate")
@@ -65,11 +62,9 @@ namespace MyCoffee.Migrations
                     b.Property<float>("TotalPrice")
                         .HasColumnType("REAL");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("Id");
 
-                    b.HasAlternateKey("Id");
-
-                    b.HasIndex("CustomerId1");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("CustomerOrder");
                 });
@@ -82,6 +77,9 @@ namespace MyCoffee.Migrations
 
                     b.Property<int>("OrderId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("REAL");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
@@ -99,6 +97,8 @@ namespace MyCoffee.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderLine");
                 });
@@ -170,7 +170,16 @@ namespace MyCoffee.Migrations
                 {
                     b.HasOne("MyCoffee.Entities.Customer", null)
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId1")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MyCoffee.Entities.OrderLine", b =>
+                {
+                    b.HasOne("MyCoffee.Entities.CustomerOrder", null)
+                        .WithMany("Lines")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

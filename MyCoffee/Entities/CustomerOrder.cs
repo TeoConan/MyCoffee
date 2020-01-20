@@ -14,6 +14,8 @@ namespace MyCoffee.Entities
 
         public int CustomerId { get; set; }
 
+        public List<OrderLine> Lines { get; set; }
+
         public int TimeCreate { set; get; }
         public int TimeUpdate { set; get; }
         public int TimeDelete { set; get; }
