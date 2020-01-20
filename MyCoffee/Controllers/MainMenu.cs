@@ -14,19 +14,24 @@ namespace MyCoffee.Controllers
         public MainMenu()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            _summary = "";
-            _summary += "1) Documentation\n";
-            _summary += "2) Lister les produits\n";
-            _summary += "3) Passer une commande\n";
-            _summary += "4) Voir les dates courtes\n";
-            _summary += "5) Lister par catégorie\n";
-            _summary += "6) Ajouter un produit\n";
-            _summary += "7) DEBUG - Ajouter produit test\n";
-            _summary += "8) Test\n";
-            _summary += "9) DEBUG - Afficher le produit 5\n";
-            _summary += "10) DEBUG - Rechercher un produit par id ou nom\n";
-            _summary += "11) DEBUG - Afficher tous les produits\n";
-            _summary += "12) DEBUG - Passer une commande\n";
+
+            _menu = new List<string>();
+            _menuDebug = new List<string>();
+
+            _menu.Add("Documentation");
+            _menu.Add("Lister les produits");
+            _menu.Add("Passer une commande");
+            _menu.Add("Voir les dates courtes");
+            _menu.Add("Lister par catégorie");
+            _menu.Add("Ajouter un produit");
+
+            _menuDebug.Add("Ajouter un produit");
+            _menuDebug.Add("Test");
+            _menuDebug.Add("Afficher le produit 5");
+            _menuDebug.Add("Rechercher produit");
+            _menuDebug.Add("Afficher tous les produits");
+            _menuDebug.Add("Passer une commande");
+            _menuDebug.Add("Test texte en couleur");
 
             Welcome();
             DisplayMainMenu();
@@ -45,6 +50,7 @@ namespace MyCoffee.Controllers
             switch (Input)
             {
                 case "0":
+                    Environment.Exit(0);
                     return;
 
                 case "1":
@@ -98,6 +104,10 @@ namespace MyCoffee.Controllers
                     CreateAnOrder();
                     break;
 
+                case "13":
+                    DrawColor();
+                    break;
+
                 default:
                     DecisionTree(AskCommand(), DisplayMenu);
                     break;
@@ -135,6 +145,16 @@ namespace MyCoffee.Controllers
         {
             //var explorer = new Explorer();
             var test = new Test();
+            AskKeyPress();
+        }
+
+        public void DrawColor()
+        {
+            style.Red("Je suis rouge");
+            style.Green(" , je suis vert");
+            style.Yellow(" lol chui jaune");
+            style.Cyan(" genre chui cyan là", true);
+
             AskKeyPress();
         }
 
