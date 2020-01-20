@@ -31,19 +31,21 @@ namespace MyCoffee.Controllers
                     productsRepository.AddProduct(product);
                 } catch (Exception e)
                 {
+                    style.SelectColor(ConsoleColor.Red);
                     Echo("Impossible d'ajouter le produit en base");
                     Echo("Message d'erreur");
                     Echo(e.Message);
+                    style.SelectColor(ConsoleColor.White);
                     AskKeyPress();
                     return;
                 }
                 
-                Echo("Le produit a bien été créé.");
+                style.Green("Le produit a bien été créé.", true);
                 AskKeyPress();
             } else
             {
                 Clear();
-                Echo("La création de produit a été annulée.");
+                style.Yellow("La création de produit a été annulée.", true);
                 AskKeyPress();
             }
         }

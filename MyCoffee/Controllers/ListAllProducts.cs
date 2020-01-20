@@ -29,6 +29,7 @@ namespace MyCoffee.Controllers
             {
                 PrintLineCells(true, $"{aProduct.Id}", $"{aProduct.CategoryId}", aProduct.Name, aProduct.Description, $"{aProduct.Price}");
             }
+            Echo(PrintLine());
         }
 
         
