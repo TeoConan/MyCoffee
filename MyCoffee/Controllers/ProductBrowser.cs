@@ -73,7 +73,7 @@ namespace MyCoffee.Controllers
                 Clear();
                 productViewer.ShowProductProfile(products[cursor]);
                 Echo("----------------");
-                Echo("Produit " + (cursor + 1) + "/" + cursorMaximum);
+                Echo("Produit " + (cursor + 1) + "/" + (cursorMaximum + 1));
                 Echo("[p]récédent, [s]uivant, [c]hoisir, [q]uitter\n");
 
                 entry = AskCommand();

@@ -208,6 +208,7 @@ namespace MyCoffee.Controllers
         public void DebugSearchProduct()
         {
             var searchAProduct = new SearchAProduct();
+            searchAProduct.SearchProducts();
         }
 
         public void DebugShowProduct()
@@ -241,7 +242,7 @@ namespace MyCoffee.Controllers
 
         public void CreateAnOrder()
         {
-
+            var createAnOrder = new CreateAnOrder();
         }
     }
 }
