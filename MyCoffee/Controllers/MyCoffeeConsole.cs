@@ -107,7 +107,7 @@ namespace MyCoffee.Controllers
             Console.Clear();
         }
 
-        protected void DisplayMainMenu()
+        protected virtual void DisplayMainMenu()
         {
             Clear();
             DisplaySummary();
