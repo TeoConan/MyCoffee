@@ -45,6 +45,7 @@ namespace MyCoffee.Controllers
             switch (Input)
             {
                 case "0":
+                    Environment.Exit(0);
                     return;
 
                 case "1":
