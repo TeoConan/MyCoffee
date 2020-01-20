@@ -11,12 +11,11 @@ namespace MyCoffee.Controllers
 
         public SearchAProduct()
         {
-            Clear();
-            WaitForCommand();
         }
 
-        public void WaitForCommand()
+        public void SearchProducts()
         {
+            Clear();
             Echo("Entrez un id ou un nom de produit : ");
             Input = Console.ReadLine();
             int id;
@@ -42,6 +41,40 @@ namespace MyCoffee.Controllers
                 }
             }
 
+        }
+
+        public Product SelectAProduct()
+        {
+            Clear();
+            Echo("Entrez un id ou un nom de produit : ");
+            Input = Console.ReadLine();
+            int id;
+            List<Product> products;
+
+            if (int.TryParse(Input, out id))
+            {
+                var productViewer = new ProductViewer(id);
+                AskKeyPress();
+                var productRepository = new ProductsRepository();
+                return productRepository.getProductById(id);
+            }
+            else
+            {
+                ProductsRepository productsRepository = new ProductsRepository();
+                products = productsRepository.getProductsByName(Input);
+
+                if (products.Count == 0)
+                {
+                    Echo("Aucun produit trouvé.");
+                    AskKeyPress();
+                    return null;
+                }
+                else
+                {
+                    var productBrowser = new ProductBrowser();
+                    return productBrowser.SelectFromListOfProducts(products);
+                }
+            }
         }
 
         protected override void DecisionTree(string Input, bool DisplayMenu)

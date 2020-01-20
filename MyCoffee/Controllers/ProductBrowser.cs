@@ -73,7 +73,7 @@ namespace MyCoffee.Controllers
                 Clear();
                 productViewer.ShowProductProfile(products[cursor]);
                 Echo("----------------");
-                Echo("Produit " + (cursor + 1) + "/" + cursorMaximum);
+                Echo("Produit " + (cursor + 1) + "/" + (cursorMaximum + 1));
                 Echo("[p]récédent, [s]uivant, [c]hoisir, [q]uitter\n");
 
                 entry = AskCommand();
@@ -103,6 +103,56 @@ namespace MyCoffee.Controllers
                     case "q":
                         return null;
 
+                }
+            }
+        }
+
+        public KeyValuePair <string, object> SelectFromListOfProductsByCategory(List<Product> products)
+        {
+            ProductViewer productViewer = new ProductViewer();
+
+            int cursor = 0;
+            string entry;
+
+            int cursorMinimum = 0;
+            int cursorMaximum = products.Count - 1;
+
+            while (true)
+            {
+                Clear();
+                productViewer.ShowProductProfile(products[cursor]);
+                Echo("----------------");
+                Echo("Produit " + (cursor + 1) + "/" + (cursorMaximum + 1));
+                Echo("[p]récédent, [s]uivant, [c]hoisir, [r]evenir aux catégories, [q]uitter\n");
+
+                entry = AskCommand();
+
+                switch (entry.ToLower())
+                {
+                    case "p":
+                    case "précédent":
+                        if (cursorMinimum < cursor)
+                        {
+                            cursor = cursor - 1;
+                        }
+                        break;
+
+                    case "s":
+                    case "suivant":
+                        if (cursor < cursorMaximum)
+                        {
+                            cursor = cursor + 1;
+                        }
+                        break;
+
+                    case "c":
+                    case "choisir":
+                        return new KeyValuePair<string, object>("product", products[cursor]);
+                    case "r":
+                        return new KeyValuePair<string, object>("action", "categories");                                  
+
+                    case "q":
+                        return new KeyValuePair<string, object>("action", "quit");
                 }
             }
         }

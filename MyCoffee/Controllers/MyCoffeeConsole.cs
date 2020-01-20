@@ -210,6 +210,12 @@ namespace MyCoffee.Controllers
             return row;
         }
 
+        protected virtual void DisplayMainMenu()
+        {
+            Clear();
+            DisplaySummary(_menu, _menuDebug);
+            DecisionTree(AskCommand(), true);
+        }
 
         public class ConsoleStyle
         {
