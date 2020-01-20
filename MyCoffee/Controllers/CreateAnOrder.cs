@@ -47,6 +47,20 @@ namespace MyCoffee.Controllers
             DisplayMainMenu();
         }
 
+        public void RemoveFromCart()
+        {
+            var removeProductFromCart = new RemoveProductFromCart(Cart);
+            var id = removeProductFromCart.RemoveAProduct();
+            if (id == 0)
+            {
+                DisplayMainMenu();
+            } else
+            {
+                Cart.RemoveAt(id - 1);
+                DisplayMainMenu();
+            }
+        }
+
         protected override void DisplayMainMenu()
         {
             Clear();
@@ -73,7 +87,7 @@ namespace MyCoffee.Controllers
                     SelectAProductByCategory();
                     break;
                 case "3":
-
+                    RemoveFromCart();
                     break;
                 case "4":
 
@@ -93,7 +107,7 @@ namespace MyCoffee.Controllers
             Echo("Contenu du panier :");
             foreach (Product product in Cart)
             {
-                Echo ("- " + product.Name);
+                Echo ("- " + product.Name + " | " + product.Price + "€");
             }
             Echo("\n");
         }
