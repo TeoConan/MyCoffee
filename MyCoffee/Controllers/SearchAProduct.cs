@@ -1,6 +1,7 @@
 ﻿using System;
 using MyCoffee.Entities;
 using MyCoffee.Data;
+using System.Collections.Generic;
 
 namespace MyCoffee.Controllers
 {
@@ -19,24 +20,25 @@ namespace MyCoffee.Controllers
             Echo("Entrez un id ou un nom de produit : ");
             Input = Console.ReadLine();
             int id;
-            Product product;
+            List <Product> products;
 
             if (int.TryParse(Input, out id))
             {
-                var productViewer = new ProductViewer(id);
-                AskKeyPress();
+               /* var productBrowser = new ProductBrowser(id);
+                AskKeyPress();*/
             } else
             {
                 ProductsRepository productsRepository = new ProductsRepository();
-                product = productsRepository.getProductByName(Input);
+                products = productsRepository.getProductsByName(Input);
 
-                if (product == null)
+                if (products.Count == 0)
                 {
                     Echo("Aucun produit trouvé.");
                     AskKeyPress();
                 } else
                 {
-                    var productViewer = new ProductViewer(product);
+                    var productBrowser = new ProductBrowser();
+                    productBrowser.BrowseListOfProducts(products);
                     AskKeyPress();
                 }
             }

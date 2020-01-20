@@ -32,7 +32,7 @@ namespace MyCoffee.Controllers
 
                 entry = AskCommand();
 
-                switch (entry)
+                switch (entry.ToLower())
                 {
                     case "p":
                     case "précédent":
