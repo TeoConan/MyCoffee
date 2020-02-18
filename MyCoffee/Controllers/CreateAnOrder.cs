@@ -7,20 +7,22 @@ namespace MyCoffee.Controllers
 {
     public class CreateAnOrder : MyCoffeeConsole
     {
+        //Naming convention ok
+
         public List<Product> Cart { get; set; }
 
         public CreateAnOrder()
         {
             Cart = new List<Product>();
 
-            _menu = new List<string>();
-            _menu.Add("Ajouter un produit par nom ou id");
-            _menu.Add("Ajouter un produit par catégorie");
-            _menu.Add("Retirer un produit");
-            _menu.Add("Valider la commande");
-            _menu.Add("Annuler la commande");
+            Menu = new List<string>();
+            Menu.Add("Ajouter un produit par nom ou id");
+            Menu.Add("Ajouter un produit par catégorie");
+            Menu.Add("Retirer un produit");
+            Menu.Add("Valider la commande");
+            Menu.Add("Annuler la commande");
 
-            DisplayMainMenu(_menu);
+            DisplayMainMenu(Menu);
         }
 
         public void SelectAProduct()
@@ -74,13 +76,13 @@ namespace MyCoffee.Controllers
                 }
             }
            
-            DisplaySummary(_menu);
+            DisplaySummary(Menu);
             DecisionTree(AskCommand(), true);
         }
 
-        protected override void DecisionTree(string Input, bool DisplayMenu)
+        protected override void DecisionTree(string input, bool displayMenu)
         {
-            switch(Input)
+            switch(input)
             {
                 case "1":
                     SelectAProduct();
@@ -98,7 +100,7 @@ namespace MyCoffee.Controllers
 
                     break;
                 default:
-                    DecisionTree(AskCommand(), DisplayMenu);
+                    DecisionTree(AskCommand(), displayMenu);
                     break;
             }
 

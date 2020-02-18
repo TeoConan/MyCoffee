@@ -7,6 +7,8 @@ namespace MyCoffee.Controllers
 {
     public class SearchAProduct : MyCoffeeConsole
     {
+        //Naming convention ok
+
         public string Input { get; set; }
 
         public SearchAProduct()
@@ -28,7 +30,7 @@ namespace MyCoffee.Controllers
             } else
             {
                 ProductsRepository productsRepository = new ProductsRepository();
-                products = productsRepository.getProductsByName(Input);
+                products = productsRepository.GetProductsByName(Input);
 
                 if (products.Count == 0)
                 {
@@ -56,12 +58,12 @@ namespace MyCoffee.Controllers
                 var productViewer = new ProductViewer(id);
                 AskKeyPress();
                 var productRepository = new ProductsRepository();
-                return productRepository.getProductById(id);
+                return productRepository.GetProductById(id);
             }
             else
             {
                 ProductsRepository productsRepository = new ProductsRepository();
-                products = productsRepository.getProductsByName(Input);
+                products = productsRepository.GetProductsByName(Input);
 
                 if (products.Count == 0)
                 {
@@ -77,7 +79,7 @@ namespace MyCoffee.Controllers
             }
         }
 
-        protected override void DecisionTree(string Input, bool DisplayMenu)
+        protected override void DecisionTree(string input, bool displayMenu)
         {
         }
     }

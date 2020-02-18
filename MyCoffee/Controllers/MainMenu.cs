@@ -10,28 +10,29 @@ namespace MyCoffee.Controllers
 {
     class MainMenu : MyCoffeeConsole
     {
+        //Naming convention ok
 
         public MainMenu()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            _menu = new List<string>();
-            _menuDebug = new List<string>();
+            Menu = new List<string>();
+            MenuDebug = new List<string>();
 
-            _menu.Add("Documentation");
-            _menu.Add("Lister les produits");
-            _menu.Add("Passer une commande");
-            _menu.Add("Voir les dates courtes");
-            _menu.Add("Lister par catégorie");
-            _menu.Add("Ajouter un produit");
+            Menu.Add("Documentation");
+            Menu.Add("Lister les produits");
+            Menu.Add("Passer une commande");
+            Menu.Add("Voir les dates courtes");
+            Menu.Add("Lister par catégorie");
+            Menu.Add("Ajouter un produit");
 
-            _menuDebug.Add("Ajouter un produit");
-            _menuDebug.Add("Test");
-            _menuDebug.Add("Afficher le produit 5");
-            _menuDebug.Add("Rechercher produit");
-            _menuDebug.Add("Afficher tous les produits");
-            _menuDebug.Add("Passer une commande");
-            _menuDebug.Add("Test texte en couleur");
+            MenuDebug.Add("Ajouter un produit");
+            MenuDebug.Add("Test");
+            MenuDebug.Add("Afficher le produit 5");
+            MenuDebug.Add("Rechercher produit");
+            MenuDebug.Add("Afficher tous les produits");
+            MenuDebug.Add("Passer une commande");
+            MenuDebug.Add("Test texte en couleur");
 
             Welcome();
             DisplayMainMenu();
@@ -81,13 +82,13 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "7":
-                    generateData();
+                    GenerateDate();
                     DisplayMainMenu();
                     return;
                     break;
 
                 case "8":
-                    test();
+                    Test();
                     break;
                 case "9":
                     DebugShowProduct();
@@ -124,7 +125,7 @@ namespace MyCoffee.Controllers
             Clear();
             var mockProductRepository = new MockProductRepository();
 
-            var products = mockProductRepository.getAllProducts();
+            var products = mockProductRepository.GetAllProducts();
             Echo("Liste des produits : \n");
 
             foreach (Product product in products)
@@ -141,7 +142,7 @@ namespace MyCoffee.Controllers
             var listByCategory = new ListByCategory();
         }
 
-        private void test()
+        private void Test()
         {
             //var explorer = new Explorer();
             var test = new Test();
@@ -150,16 +151,16 @@ namespace MyCoffee.Controllers
 
         public void DrawColor()
         {
-            style.Red("Je suis rouge");
-            style.Green(" , je suis vert");
-            style.Yellow(" lol chui jaune");
-            style.Cyan(" genre chui cyan là", true);
+            Style.Red("Je suis rouge");
+            Style.Green(" , je suis vert");
+            Style.Yellow(" lol chui jaune");
+            Style.Cyan(" genre chui cyan là", true);
 
             AskKeyPress();
         }
 
 
-        private void generateData()
+        private void GenerateDate()
         {
             Clear();
 
@@ -254,7 +255,7 @@ namespace MyCoffee.Controllers
         public void DebugListAllProducts()
         {
             MockProductRepository mockProductRepository = new MockProductRepository();
-            List<Product> products = mockProductRepository.getAllProducts();
+            List<Product> products = mockProductRepository.GetAllProducts();
 
             ProductBrowser productBrowser = new ProductBrowser();
             productBrowser.BrowseListOfProducts(products);

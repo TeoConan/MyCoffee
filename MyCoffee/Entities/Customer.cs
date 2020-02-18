@@ -8,6 +8,8 @@ namespace MyCoffee.Entities
 {
     public class Customer
     {
+        //Naming convention ok
+
         public Customer()
         {
             //Orders = new List<Order>();

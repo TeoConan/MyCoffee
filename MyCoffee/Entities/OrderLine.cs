@@ -8,6 +8,8 @@ namespace MyCoffee.Entities
 {
     public class OrderLine
     {
+        //Naming convention ok
+
         [Key]
         public int Id { get; set; }
         public int ProductId { get; set; }
@@ -36,9 +38,9 @@ namespace MyCoffee.Entities
 
             using (var dboContext = new MCDBContext())
             {
-                var DbList = dboContext.OrderLine;
+                var dbList = dboContext.OrderLine;
 
-                foreach (OrderLine OrderLine in DbList)
+                foreach (OrderLine OrderLine in dbList)
                 {
                     listOrderLines.Add(OrderLine);
                 }

@@ -8,6 +8,8 @@ namespace MyCoffee.Controllers
 {
     public class ListAllProducts : MyCoffeeConsole
     {
+        //Naming convention ok
+
         public ListAllProducts()
         {
             Clear();
@@ -42,7 +44,7 @@ namespace MyCoffee.Controllers
             Clear();
         }
 
-        protected override void DecisionTree(string Input, bool DisplayMenu)
+        protected override void DecisionTree(string input, bool displayMenu)
         {
         }
     }

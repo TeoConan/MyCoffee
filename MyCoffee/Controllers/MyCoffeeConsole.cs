@@ -5,22 +5,24 @@ namespace MyCoffee.Controllers
 {
     public abstract class MyCoffeeConsole
     {
-        protected string _summary;
-        protected ConsoleStyle style;
-        protected List<string> _menu;
-        protected List<string> _menuDebug;
-        public string defautlAskCommandMessage { get; set; }
-        public string defaultAskKeyPressMessage { get; set; }
+        //Naming convention ok
 
-        public int tableWidth = 100;
+        protected string Summary;
+        protected ConsoleStyle Style;
+        protected List<string> Menu;
+        protected List<string> MenuDebug;
+        public string DefautlAskCommandMessage { get; set; }
+        public string DefaultAskKeyPressMessage { get; set; }
+
+        public int TableWidth = 100;
         
 
 
         public MyCoffeeConsole()
         {
-            style = new ConsoleStyle();
-            defautlAskCommandMessage = "Veuillez entrer une commande";
-            defaultAskKeyPressMessage = "Appuyez sur une touche.";
+            Style = new ConsoleStyle();
+            DefautlAskCommandMessage = "Veuillez entrer une commande";
+            DefaultAskKeyPressMessage = "Appuyez sur une touche.";
         }
 
         public void Echo(string text)
@@ -36,7 +38,7 @@ namespace MyCoffee.Controllers
         protected void DisplayMainMenu(params List<string>[] lists)
         {
             Clear();
-            DisplaySummary(_menu, _menuDebug);
+            DisplaySummary(Menu, MenuDebug);
             Echo("");
             DecisionTree(AskCommand(), true);
         }
@@ -51,12 +53,12 @@ namespace MyCoffee.Controllers
 
                 foreach (string item in list)
                 {
-                    style.Yellow($"{index}");
-                    style.Gray(" - ");
-                    style.White(item, true);
+                    Style.Yellow($"{index}");
+                    Style.Gray(" - ");
+                    Style.White(item, true);
                     index++;
                 }
-                style.Gray(new string('-', 35), true);
+                Style.Gray(new string('-', 35), true);
             }
         }
 
@@ -70,7 +72,7 @@ namespace MyCoffee.Controllers
 
         protected string AskCommand()
         {
-            return AskCommand(defautlAskCommandMessage);
+            return AskCommand(DefautlAskCommandMessage);
         }
 
         // Le return de AskKeyPress peut être comparé à un string
@@ -83,7 +85,7 @@ namespace MyCoffee.Controllers
 
         protected ConsoleKeyInfo AskKeyPress()
         {
-            return AskKeyPress(defaultAskKeyPressMessage);
+            return AskKeyPress(DefaultAskKeyPressMessage);
         }
 
         protected bool AskYesNo()
@@ -127,12 +129,12 @@ namespace MyCoffee.Controllers
 
         public string PrintLine()
         {
-            return (new string('-', tableWidth));
+            return (new string('-', TableWidth));
         }
 
         public string PrintRow(bool alignText, params string[] columns)
         {
-            int width = (tableWidth - columns.Length) / columns.Length;
+            int width = (TableWidth - columns.Length) / columns.Length;
             string row = "|";
 
             if (alignText)
@@ -195,7 +197,7 @@ namespace MyCoffee.Controllers
 
         public string PrintLineCells(bool print = true, params string[] cells)
         {
-            int width = (tableWidth - cells.Length) / cells.Length;
+            int width = (TableWidth - cells.Length) / cells.Length;
             string row = "|";
             foreach (string column in cells)
             {
@@ -213,17 +215,17 @@ namespace MyCoffee.Controllers
         protected virtual void DisplayMainMenu()
         {
             Clear();
-            DisplaySummary(_menu, _menuDebug);
+            DisplaySummary(Menu, MenuDebug);
             DecisionTree(AskCommand(), true);
         }
 
         public class ConsoleStyle
         {
-            public void PrintColor(ConsoleColor color, string text, bool backline = true)
+            public void PrintColor(ConsoleColor color, string text, bool backLine = true)
             {
                 SelectColor(color);
 
-                if (backline)
+                if (backLine)
                 {
                     Console.WriteLine(text);
                     SelectColor(ConsoleColor.White);
@@ -239,11 +241,11 @@ namespace MyCoffee.Controllers
                 Console.ForegroundColor = color;
             }
 
-            public void Color(ConsoleColor color, string text = null, bool backline = false)
+            public void Color(ConsoleColor color, string text = null, bool backLine = false)
             {
                 if (!string.IsNullOrEmpty(text))
                 {
-                    PrintColor(color, text, backline);
+                    PrintColor(color, text, backLine);
                 }
                 else
                 {
@@ -251,39 +253,39 @@ namespace MyCoffee.Controllers
                 }
             }
 
-            public void Red(string text = null, bool backline = false)
+            public void Red(string text = null, bool backLine = false)
             {
-                Color(ConsoleColor.Red, text, backline);
+                Color(ConsoleColor.Red, text, backLine);
             }
 
-            public void Yellow(string text = null, bool backline = false)
+            public void Yellow(string text = null, bool backLine = false)
             {
-                Color(ConsoleColor.Yellow, text, backline);
+                Color(ConsoleColor.Yellow, text, backLine);
             }
 
-            public void Cyan(string text = null, bool backline = false)
+            public void Cyan(string text = null, bool backLine = false)
             {
-                Color(ConsoleColor.Cyan, text, backline);
+                Color(ConsoleColor.Cyan, text, backLine);
             }
-            public void Gray(string text = null, bool backline = false)
+            public void Gray(string text = null, bool backLine = false)
             {
-                Color(ConsoleColor.Gray, text, backline);
+                Color(ConsoleColor.Gray, text, backLine);
             }
-            public void White(string text = null, bool backline = false)
+            public void White(string text = null, bool backLine = false)
             {
-                Color(ConsoleColor.White, text, backline);
+                Color(ConsoleColor.White, text, backLine);
             }
-            public void Magenta(string text = null, bool backline = false)
+            public void Magenta(string text = null, bool backLine = false)
             {
-                Color(ConsoleColor.Magenta, text, backline);
+                Color(ConsoleColor.Magenta, text, backLine);
             }
 
-            public void Green(string text = null, bool backline = false)
+            public void Green(string text = null, bool backLine = false)
             {
-                Color(ConsoleColor.Green, text, backline);
+                Color(ConsoleColor.Green, text, backLine);
             }
         }
 
-        abstract protected void DecisionTree(string Input, bool DisplayMenu);
+        abstract protected void DecisionTree(string input, bool displayMenu);
     }
 }

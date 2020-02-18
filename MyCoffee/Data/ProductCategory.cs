@@ -7,6 +7,8 @@ namespace MyCoffee.Data
 {
     public enum ProductCategory
     {
+        //Naming convention ok
+
         [Display(Name = "Boisson chaude")]
         HotDrink,
         [Display(Name = "Viennoiserie")]

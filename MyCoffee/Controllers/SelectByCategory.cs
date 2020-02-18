@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 namespace MyCoffee.Controllers
 {
+    //Naming convention ok
+
     public class SelectByCategory : MyCoffeeConsole
     {
         public string Input { get; set; }
@@ -13,16 +15,16 @@ namespace MyCoffee.Controllers
         public Product SelectProductByCategory()
         {
 
-            _menu = new List<string>();
-            _menu.Add("Sandwiches");
-            _menu.Add("Viennoiseries");
-            _menu.Add("Salades");
-            _menu.Add("Boissons");
-            _menu.Add("Snacks");
-            _menu.Add("Lunch boxes");
-            _menu.Add("[q]uitter");
+            Menu = new List<string>();
+            Menu.Add("Sandwiches");
+            Menu.Add("Viennoiseries");
+            Menu.Add("Salades");
+            Menu.Add("Boissons");
+            Menu.Add("Snacks");
+            Menu.Add("Lunch boxes");
+            Menu.Add("[q]uitter");
 
-            return DisplayMainMenuWithProduct(_menu);
+            return DisplayMainMenuWithProduct(Menu);
         }
 
         public Product ListProducts(int categoryId, string category)
@@ -30,7 +32,7 @@ namespace MyCoffee.Controllers
             Clear();
             var mockProductRepository = new MockProductRepository();
 
-            var products = mockProductRepository.getProductsByCategory(categoryId);
+            var products = mockProductRepository.GetProductsByCategory(categoryId);
             Console.WriteLine("Liste des produits de la catégorie : " + category + "\n");
 
             var productBrowser = new ProductBrowser();
@@ -38,7 +40,7 @@ namespace MyCoffee.Controllers
             switch (result.Key)
             {
                 case "product":
-                    return (Product)result.Value;
+                    return (Product) result.Value;
                 case "action":
                     switch(result.Value)
                     {
@@ -61,7 +63,7 @@ namespace MyCoffee.Controllers
         protected Product DisplayMainMenuWithProduct(params List<string>[] lists)
         {
             Clear();
-            DisplaySummary(_menu);
+            DisplaySummary(Menu);
             return DecisionTreeWithProduct(AskCommand(), true);
 
         }
@@ -71,9 +73,9 @@ namespace MyCoffee.Controllers
             AskKeyPress();
         }
 
-        protected Product DecisionTreeWithProduct(string Input, bool DisplayMenu)
+        protected Product DecisionTreeWithProduct(string input, bool displayMenu)
         {
-            switch (Input.ToLower())
+            switch (input.ToLower())
             {
                 case "q":
                     return null;
@@ -90,16 +92,16 @@ namespace MyCoffee.Controllers
                 case "6":
                     return ListProducts(6, "Lunch boxes");
                 default:
-                    return DecisionTreeWithProduct(AskCommand(), DisplayMenu);
+                    return DecisionTreeWithProduct(AskCommand(), displayMenu);
             }
 
-            if (DisplayMenu)
+            if (displayMenu)
             {
                 return DisplayMainMenuWithProduct();
             }
         }
 
-        protected override void DecisionTree(string Input, bool DisplayMenu)
+        protected override void DecisionTree(string input, bool displayMenu)
         {
             throw new NotImplementedException();
         }

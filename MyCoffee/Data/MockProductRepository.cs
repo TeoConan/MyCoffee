@@ -9,6 +9,8 @@ namespace MyCoffee.Data
 {
     public class MockProductRepository : IProductsRepository
     {
+        //Naming convention ok
+
         private List<Product> _products = new List<Product>
         {
             new Product { Id = 1, CategoryId = 2, Name = "Panini Chelou", Description = "Contenu étrange de sucré-salé", Price = 5 },
@@ -28,7 +30,7 @@ namespace MyCoffee.Data
         {
         }
 
-        public List<Product> getAllProducts()
+        public List<Product> GetAllProducts()
         {
             if (_products == null)
             {
@@ -37,7 +39,7 @@ namespace MyCoffee.Data
             return _products;
         }
 
-        public List<Product> getProductsByCategory(int categoryId)
+        public List<Product> GetProductsByCategory(int categoryId)
         {
 
             var products = _products.FindAll((product) => product.CategoryId == categoryId);
@@ -48,7 +50,7 @@ namespace MyCoffee.Data
             return products;
         }
 
-        public List<Product> getProductsByName(string name)
+        public List<Product> GetProductsByName(string name)
         {
             var products = _products.FindAll((product) => product.Name.Contains(name));
             if (products == null)
@@ -58,7 +60,7 @@ namespace MyCoffee.Data
             return products;
         }
 
-        public Product getProductByName(string name)
+        public Product GetProductByName(string name)
         {
             var product = _products.First((product) => product.Name.ToLower().Contains(name.ToLower()));
             if (product == null)
@@ -68,7 +70,7 @@ namespace MyCoffee.Data
             return product;
         }
 
-        public Product getProductById(int id)
+        public Product GetProductById(int id)
         {
             var product = _products.First((product) => product.Id == id);
             if (product == null)
