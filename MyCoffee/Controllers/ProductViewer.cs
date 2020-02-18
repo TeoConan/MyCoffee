@@ -47,7 +47,7 @@ namespace MyCoffee.Controllers
             string categoryLabel = mockCategoryRepository.GetCategoryLabel(product.CategoryId);
             productDetails += "\n\nCatégorie : " + categoryLabel;
             productDetails += "\n\nDescription : " + product.Description;
-            productDetails += "\n\nPrix : " + product.Price.ToString() + "€\n";
+            productDetails += "\n\nPrix : " + Math.Round(product.Price, 2).ToString() + "€\n";
 
             Echo(productDetails);
         }

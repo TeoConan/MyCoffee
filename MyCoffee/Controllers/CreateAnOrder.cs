@@ -12,13 +12,15 @@ namespace MyCoffee.Controllers
         public CreateAnOrder()
         {
             Cart = new List<Product>();
-            _summary = "1) Ajouter un produit par nom ou id\n";
-            _summary += "2) Ajouter un produit par catégorie\n";
-            _summary += "3) Retirer un produit\n";
-            _summary += "4) Valider la commande\n";
-            _summary += "5) Annuler la commande\n";
-            
-            DisplayMainMenu();
+
+            _menu = new List<string>();
+            _menu.Add("Ajouter un produit par nom ou id");
+            _menu.Add("Ajouter un produit par catégorie");
+            _menu.Add("Retirer un produit");
+            _menu.Add("Valider la commande");
+            _menu.Add("Annuler la commande");
+
+            DisplayMainMenu(_menu);
         }
 
         public void SelectAProduct()
@@ -72,7 +74,7 @@ namespace MyCoffee.Controllers
                 }
             }
            
-            DisplaySummary();
+            DisplaySummary(_menu);
             DecisionTree(AskCommand(), true);
         }
 
@@ -104,11 +106,15 @@ namespace MyCoffee.Controllers
 
         public void DisplayCart()
         {
+            float totalPrice = 0.0F;
             Echo("Contenu du panier :");
             foreach (Product product in Cart)
             {
-                Echo ("- " + product.Name + " | " + product.Price + "€");
+                Echo ("- " + product.Name + " | " + Math.Round(product.Price, 2) + "€");
+                totalPrice += product.Price;
             }
+           
+            Echo("\nTotal du panier : " + Math.Round(totalPrice, 2).ToString() + "€");
             Echo("\n");
         }
     }

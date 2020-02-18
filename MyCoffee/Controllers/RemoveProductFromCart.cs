@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MyCoffee.Data;
 using MyCoffee.Entities;
 
@@ -32,7 +33,11 @@ namespace MyCoffee.Controllers
         public int DisplayMainMenuWithProduct()
         {
             Clear();
-            DisplaySummary();
+            var menu = from product in Cart
+                       select (product.Name + " | " + Math.Round(product.Price, 2) + "€");
+            var listMenu = menu.ToList();
+            listMenu.Add("[q]uitter");
+            DisplaySummary(listMenu);
             return DecisionTreeWithProduct(AskCommand(), true);
         }
 

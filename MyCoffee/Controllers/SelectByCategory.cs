@@ -1,6 +1,7 @@
 ﻿using System;
 using MyCoffee.Data;
 using MyCoffee.Entities;
+using System.Collections.Generic;
 
 namespace MyCoffee.Controllers
 {
@@ -11,17 +12,17 @@ namespace MyCoffee.Controllers
 
         public Product SelectProductByCategory()
         {
-            _summary = "";
-            _summary += "1) Sandwich\n";
-            _summary += "2) Viennoiserie\n";
-            _summary += "3) Salades\n";
-            _summary += "4) Boissons\n";
-            _summary += "5) Snacks\n";
-            _summary += "6) Lunch boxes\n";
-            _summary += "\n[q]uitter\n";
 
+            _menu = new List<string>();
+            _menu.Add("Sandwiches");
+            _menu.Add("Viennoiseries");
+            _menu.Add("Salades");
+            _menu.Add("Boissons");
+            _menu.Add("Snacks");
+            _menu.Add("Lunch boxes");
+            _menu.Add("[q]uitter");
 
-            return DisplayMainMenuWithProduct();
+            return DisplayMainMenuWithProduct(_menu);
         }
 
         public Product ListProducts(int categoryId, string category)
@@ -57,10 +58,10 @@ namespace MyCoffee.Controllers
             }
         }
 
-        protected Product DisplayMainMenuWithProduct()
+        protected Product DisplayMainMenuWithProduct(params List<string>[] lists)
         {
             Clear();
-            DisplaySummary();
+            DisplaySummary(_menu);
             return DecisionTreeWithProduct(AskCommand(), true);
 
         }
