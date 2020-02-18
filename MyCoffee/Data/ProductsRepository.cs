@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MyCoffee.Entities;
 
 namespace MyCoffee.Data
@@ -63,5 +64,14 @@ namespace MyCoffee.Data
 
             return products;
         }
+
+        public Product getLastProduct()
+        {
+            var listProducts = this.GetAllProducts();
+
+            var product = listProducts.Last();
+            return product;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MyCoffee.Data;
 using MyCoffee.Entities;
 
@@ -19,16 +20,19 @@ namespace MyCoffee.Controllers
 
             var product = new Product { CategoryId = categoryId, Name = name, Description = description, Price = price };
 
+            ProductsRepository productsRepository = new ProductsRepository();
+            StocksRepository stockRepository = new StocksRepository();
             bool isProductValidated = ValidateProduct(product);
 
             if (isProductValidated)
             {
                 Clear();
                 Echo("Ajout du produit en base...");
-                ProductsRepository productsRepository = new ProductsRepository();
+
                 try
                 {
                     productsRepository.AddProduct(product);
+
                 } catch (Exception e)
                 {
                     style.SelectColor(ConsoleColor.Red);
@@ -39,15 +43,22 @@ namespace MyCoffee.Controllers
                     AskKeyPress();
                     return;
                 }
+
                 
                 style.Green("Le produit a bien été créé.", true);
-                AskKeyPress();
+                
             } else
             {
                 Clear();
                 style.Yellow("La création de produit a été annulée.", true);
                 AskKeyPress();
             }
+
+            var listProduct = productsRepository.getLastProduct();
+            
+            var stock = new Stock { Quantity = 20, ProductId = listProduct.Id, Expiry = 1578665721 };
+            stockRepository.AddStock(stock);
+            AskKeyPress();
         }
 
         public string AskForName()
