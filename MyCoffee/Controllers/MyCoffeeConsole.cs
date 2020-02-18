@@ -49,7 +49,7 @@ namespace MyCoffee.Controllers
 
             foreach (List<string> list in lists)
             {
-                if (list == null ) { continue; }
+                if (list == null || list.Count == 0 ) { continue; }
 
                 foreach (string item in list)
                 {
