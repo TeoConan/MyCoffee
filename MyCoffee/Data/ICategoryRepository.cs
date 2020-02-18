@@ -5,6 +5,8 @@ using System.Text;
 
 namespace MyCoffee.Data
 {
+    //Naming convention ok
+
     public interface ICategoryRepository
     {
         string GetCategoryLabel(int id);

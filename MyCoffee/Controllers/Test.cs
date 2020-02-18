@@ -5,6 +5,8 @@ namespace MyCoffee.Controllers
 {
     public class Test
     {
+        //Naming convention ok
+
         public Test()
         {
             AddProduct(new Product { Id = 1, CategoryId = 2, Name = "Panini Chelou", Description = "Contenu étrange de sucré-salé", Price = 5 });

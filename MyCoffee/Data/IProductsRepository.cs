@@ -4,14 +4,16 @@ using MyCoffee.Entities;
 
 namespace MyCoffee.Data
 {
+    //Naming convention ok
+
     public interface IProductsRepository
     {
-		List<Product> getAllProducts();
+		List<Product> GetAllProducts();
 
-        List<Product> getProductsByName(string name);
+        List<Product> GetProductsByName(string name);
 
-		List<Product> getProductsByCategory(int categoryId);
+		List<Product> GetProductsByCategory(int categoryId);
 
-		Product getProductById(int id);
+		Product GetProductById(int id);
     }
 }

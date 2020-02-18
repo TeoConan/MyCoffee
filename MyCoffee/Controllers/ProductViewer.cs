@@ -6,6 +6,8 @@ namespace MyCoffee.Controllers
 {
     public class ProductViewer : MyCoffeeConsole
     {
+        //Naming convention ok
+
         //SUMMARY :
         //This class covers functions used to display a single product.
         //All product information are listed.
@@ -21,7 +23,7 @@ namespace MyCoffee.Controllers
         {
             Clear();
             ProductsRepository productsRepository = new ProductsRepository();
-            var product = productsRepository.getProductById(productId);
+            var product = productsRepository.GetProductById(productId);
             if (product == null)
             {
                 Echo("Aucun produit trouvé.\n");
@@ -47,12 +49,12 @@ namespace MyCoffee.Controllers
             string categoryLabel = mockCategoryRepository.GetCategoryLabel(product.CategoryId);
             productDetails += "\n\nCatégorie : " + categoryLabel;
             productDetails += "\n\nDescription : " + product.Description;
-            productDetails += "\n\nPrix : " + product.Price.ToString() + "€\n";
+            productDetails += "\n\nPrix : " + Math.Round(product.Price, 2).ToString() + "€\n";
 
             Echo(productDetails);
         }
 
-        protected override void DecisionTree(string command, bool DisplayMenu)
+        protected override void DecisionTree(string command, bool displayMenu)
         {
         }
     }

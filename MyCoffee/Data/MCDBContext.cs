@@ -8,6 +8,8 @@ namespace MyCoffee.Data
 {
     class MCDBContext : DbContext
     {
+        //Naming convention ok
+
         private string DBName { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

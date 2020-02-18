@@ -7,6 +7,8 @@ namespace MyCoffee.Data
 {
     public class ProductsRepository
     {
+        //Naming convention ok
+
         public bool AddProduct(Product product)
         {
             using (var dboContext = new MCDBContext())
@@ -24,9 +26,9 @@ namespace MyCoffee.Data
 
             using (var dboContext = new MCDBContext())
             {
-                var DbList = dboContext.Product;
+                var dbList = dboContext.Product;
 
-                foreach (Product product in DbList)
+                foreach (Product product in dbList)
                 {
                     listProducts.Add(product);
                 }
@@ -36,7 +38,7 @@ namespace MyCoffee.Data
 
         }
 
-        public Product getProductById(int id)
+        public Product GetProductById(int id)
         {
             var listProducts = this.GetAllProducts();
             var product = listProducts.Find(product => product.Id == id);
@@ -47,7 +49,7 @@ namespace MyCoffee.Data
             return product;
         }
 
-        public Product getProductByName(string name)
+        public Product GetProductByName(string name)
         {
             var listProducts = this.GetAllProducts();
 
@@ -56,7 +58,7 @@ namespace MyCoffee.Data
             return product;
         }
 
-        public List<Product> getProductsByName(string name)
+        public List<Product> GetProductsByName(string name)
         {
             var listProducts = this.GetAllProducts();
 

@@ -6,8 +6,11 @@ namespace MyCoffee.Entities
 {
     public class Category
     {
+        //Naming convention ok
+
         public int Id { get; set; }
 
         public string Name { get; set; }
+
     }
 }

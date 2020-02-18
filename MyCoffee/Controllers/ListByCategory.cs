@@ -7,18 +7,20 @@ namespace MyCoffee.Controllers
 {
     public class ListByCategory : MyCoffeeConsole
     {
+        //Naming convention ok
+
         public string Input { get; set; }
 
         public ListByCategory()
         {
-            _menu = new List<string>();
-            _menu.Add("Sandwich");
-            _menu.Add("Viennoiseries");
-            _menu.Add("Salades");
-            _menu.Add("Boissons");
-            _menu.Add("Snacks");
-            _menu.Add("Lunch boxes");
-            _menu.Add("[q]uitter");
+            Menu = new List<string>();
+            Menu.Add("Sandwich");
+            Menu.Add("Viennoiseries");
+            Menu.Add("Salades");
+            Menu.Add("Boissons");
+            Menu.Add("Snacks");
+            Menu.Add("Lunch boxes");
+            Menu.Add("[q]uitter");
 
             DisplayMainMenu();
         }
@@ -28,7 +30,7 @@ namespace MyCoffee.Controllers
             Clear();
             var mockProductRepository = new MockProductRepository();
 
-            var products = mockProductRepository.getProductsByCategory(categoryId);
+            var products = mockProductRepository.GetProductsByCategory(categoryId);
             Console.WriteLine("Liste des produits de la catégorie : " + category + "\n");
 
             var productBrowser = new ProductBrowser();
@@ -41,9 +43,9 @@ namespace MyCoffee.Controllers
             AskKeyPress();
         }
 
-        protected override void DecisionTree(string Input, bool DisplayMenu)
+        protected override void DecisionTree(string input, bool displayMenu)
         {
-            switch (Input.ToLower())
+            switch (input.ToLower())
             {
                 case "q":
                     return;
@@ -66,11 +68,11 @@ namespace MyCoffee.Controllers
                     ListProducts(6, "Lunch boxes");
                     break;
                 default:
-                    DecisionTree(AskCommand(), DisplayMenu);
+                    DecisionTree(AskCommand(), displayMenu);
                     break;
             }
 
-            if (DisplayMenu)
+            if (displayMenu)
             {
                 DisplayMainMenu();
             }

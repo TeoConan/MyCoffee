@@ -8,6 +8,8 @@ namespace MyCoffee.Entities
 {
     public class Stock
     {
+        //Naming convention ok
+
         [Key]
         public int Id { get; private set; }
         public int Quantity { get; set; }
@@ -34,9 +36,9 @@ namespace MyCoffee.Entities
 
             using (var dboContext = new MCDBContext())
             {
-                var DbList = dboContext.Stock;
+                var dbList = dboContext.Stock;
 
-                foreach (Stock Stock in DbList)
+                foreach (Stock Stock in dbList)
                 {
                     listStocks.Add(Stock);
                 }
