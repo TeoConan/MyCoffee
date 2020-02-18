@@ -63,7 +63,7 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "3":
-                    //MakeOrder();
+                    CreateAnOrder();
                     break;
 
                 case "4":
