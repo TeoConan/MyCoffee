@@ -6,6 +6,8 @@ namespace MyCoffee.Controllers
 {
     public class AddProduct : MyCoffeeConsole
     {
+        //Naming convention ok
+
         public AddProduct()
         {
             Clear();
@@ -31,21 +33,22 @@ namespace MyCoffee.Controllers
                     productsRepository.AddProduct(product);
                 } catch (Exception e)
                 {
-                    style.SelectColor(ConsoleColor.Red);
+                    Style.SelectColor(ConsoleColor.Red);
                     Echo("Impossible d'ajouter le produit en base");
+                    //TODO Message d'erreur ?
                     Echo("Message d'erreur");
                     Echo(e.Message);
-                    style.SelectColor(ConsoleColor.White);
+                    Style.SelectColor(ConsoleColor.White);
                     AskKeyPress();
                     return;
                 }
                 
-                style.Green("Le produit a bien été créé.", true);
+                Style.Green("Le produit a bien été créé.", true);
                 AskKeyPress();
             } else
             {
                 Clear();
-                style.Yellow("La création de produit a été annulée.", true);
+                Style.Yellow("La création de produit a été annulée.", true);
                 AskKeyPress();
             }
         }
@@ -150,7 +153,7 @@ namespace MyCoffee.Controllers
 
         }
 
-        protected override void DecisionTree(string Input, bool DisplayMenu)
+        protected override void DecisionTree(string input, bool displayMenu)
         {
         }
     }

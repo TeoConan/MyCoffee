@@ -8,6 +8,8 @@ namespace MyCoffee.Entities
 {
     public class CustomerOrder
     {
+        //Naming convention ok
+
         [Key]
         public int Id { get; set; }
         public float TotalPrice { get; set; }
@@ -20,7 +22,7 @@ namespace MyCoffee.Entities
         public int TimeUpdate { set; get; }
         public int TimeDelete { set; get; }
 
-        public void calculateTotalPrice()
+        public void CalculateTotalPrice()
         {
             TotalPrice = 0;
         }

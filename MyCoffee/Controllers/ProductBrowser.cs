@@ -6,6 +6,8 @@ namespace MyCoffee.Controllers
 {
     public class ProductBrowser : MyCoffeeConsole
     {
+        //Naming convention ok
+
         public ProductBrowser()
         {
         }
@@ -157,7 +159,7 @@ namespace MyCoffee.Controllers
             }
         }
 
-        protected override void DecisionTree(string Input, bool DisplayMenu)
+        protected override void DecisionTree(string input, bool displayMenu)
         {
             throw new NotImplementedException();
         }

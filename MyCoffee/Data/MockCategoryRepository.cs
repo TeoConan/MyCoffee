@@ -6,6 +6,8 @@ using System.Linq;
 
 namespace MyCoffee.Data
 {
+    //Naming convention ok
+
     public class MockCategoryRepository : ICategoryRepository
     {
         private List<Category> _categories = new List<Category>

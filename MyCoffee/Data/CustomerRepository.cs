@@ -7,6 +7,8 @@ namespace MyCoffee.Data
 {
     class CustomerRepository
     {
+        //Naming convention ok
+
         public bool AddCustomer(Customer customer)
         {
             using (var dboContext = new MCDBContext())

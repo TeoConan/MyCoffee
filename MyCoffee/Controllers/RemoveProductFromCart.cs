@@ -7,6 +7,8 @@ namespace MyCoffee.Controllers
 {
     public class RemoveProductFromCart : MyCoffeeConsole
     {
+        //Naming convention ok
+
         public List<Product> Cart { get; set; }
         public int Cursor { get; set; }
 
@@ -18,13 +20,14 @@ namespace MyCoffee.Controllers
 
         public int RemoveAProduct()
         {
-            _summary = "Votre panier : \n\n";
+            //TODO Summary mal utilisé
+            Summary = "Votre panier : \n\n";
             foreach (Product product in Cart)
             {
-                _summary += Cursor + ") " + product.Name + "\n";
+                Summary += Cursor + ") " + product.Name + "\n";
                 Cursor += 1;
             }
-            _summary += "\n\n[q]uitter";
+            Summary += "\n\n[q]uitter";
             return DisplayMainMenuWithProduct();
 
         }
@@ -36,11 +39,11 @@ namespace MyCoffee.Controllers
             return DecisionTreeWithProduct(AskCommand(), true);
         }
 
-        public int DecisionTreeWithProduct(string Input, bool DisplayMenu)
+        public int DecisionTreeWithProduct(string input, bool displayMenu)
         {
             var entryValidated = false;
             var result = 0;
-            entryValidated = int.TryParse(Input, out result);
+            entryValidated = int.TryParse(input, out result);
             if (entryValidated)
             {
                 if (result <= Cursor)
@@ -51,7 +54,7 @@ namespace MyCoffee.Controllers
                 }
             } else
             {
-                switch (Input.ToLower())
+                switch (input.ToLower())
                 {
                     case "q":
                     case "quitter":
@@ -63,7 +66,7 @@ namespace MyCoffee.Controllers
             }
         }
 
-        protected override void DecisionTree(string Input, bool DisplayMenu)
+        protected override void DecisionTree(string input, bool displayMenu)
         {
             throw new NotImplementedException();
         }
