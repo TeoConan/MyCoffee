@@ -25,14 +25,7 @@ namespace MyCoffee.Controllers
             Menu.Add("Voir les dates courtes");
             Menu.Add("Lister par catégorie");
             Menu.Add("Ajouter un produit");
-
-            MenuDebug.Add("Ajouter un produit");
-            MenuDebug.Add("Test");
-            MenuDebug.Add("Afficher le produit 5");
-            MenuDebug.Add("Rechercher produit");
-            MenuDebug.Add("Afficher tous les produits");
-            MenuDebug.Add("Passer une commande");
-            MenuDebug.Add("Test texte en couleur");
+            Menu.Add("Rechercher produit");
 
             Welcome();
             DisplayMainMenu();
@@ -64,7 +57,7 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "3":
-                    //MakeOrder();
+                    CreateAnOrder();
                     break;
 
                 case "4":
@@ -82,30 +75,15 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "7":
-                    GenerateDate();
+                    SearchProduct();
+                    break;
+
+                case "-1":
+                    GenerateData();
                     DisplayMainMenu();
-                    return;
                     break;
 
-                case "8":
-                    Test();
-                    break;
-                case "9":
-                    DebugShowProduct();
-                    break;
-                case "10":
-                    DebugSearchProduct();
-                    break;
-
-                case "11":
-                    DebugListAllProducts();
-                    break;
-
-                case "12":
-                    CreateAnOrder();
-                    break;
-
-                case "13":
+                case "-2":
                     DrawColor();
                     break;
 
@@ -160,7 +138,7 @@ namespace MyCoffee.Controllers
         }
 
 
-        private void GenerateDate()
+        private void GenerateData()
         {
             Clear();
 
@@ -226,7 +204,7 @@ namespace MyCoffee.Controllers
             AskKeyPress();
         }
 
-        public void DebugSearchProduct()
+        public void SearchProduct()
         {
             var searchAProduct = new SearchAProduct();
             searchAProduct.SearchProducts();

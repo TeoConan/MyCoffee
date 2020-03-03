@@ -74,6 +74,24 @@ namespace MyCoffee.Data
             var product = listProducts.Last();
             return product;
         }
+        public List<Product> GetProductsByCategory(int categoryId)
+        {
+            List<Product> listProducts = new List<Product>();
 
+            using (var dboContext = new MCDBContext())
+            {
+                var dbList = dboContext.Product;
+
+                foreach (Product product in dbList)
+                {
+                    if (product.CategoryId == categoryId)
+                    {
+                        listProducts.Add(product);
+                    }
+                }
+            }
+
+            return listProducts;
+        }
     }
 }

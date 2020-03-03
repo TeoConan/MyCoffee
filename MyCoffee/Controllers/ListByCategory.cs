@@ -28,9 +28,9 @@ namespace MyCoffee.Controllers
         public void ListProducts(int categoryId, string category)
         {
             Clear();
-            var mockProductRepository = new MockProductRepository();
+            var productsRepository = new ProductsRepository();
 
-            var products = mockProductRepository.GetProductsByCategory(categoryId);
+            var products = productsRepository.GetProductsByCategory(categoryId);
             Console.WriteLine("Liste des produits de la catégorie : " + category + "\n");
 
             var productBrowser = new ProductBrowser();
@@ -48,6 +48,7 @@ namespace MyCoffee.Controllers
             switch (input.ToLower())
             {
                 case "q":
+                case "7":
                     return;
                 case "1":
                     ListProducts(2, "Sandwiches");
