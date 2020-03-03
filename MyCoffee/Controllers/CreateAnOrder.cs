@@ -94,7 +94,7 @@ namespace MyCoffee.Controllers
                     RemoveFromCart();
                     break;
                 case "4":
-
+                    //ValidateOrder();
                     break;
                 case "5":
 
