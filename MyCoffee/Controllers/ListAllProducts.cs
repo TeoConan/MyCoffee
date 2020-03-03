@@ -26,10 +26,14 @@ namespace MyCoffee.Controllers
             Clear();
             Echo("Liste des produits : \n");
 
-            PrintTableHeader(true, "Id", "CategoryId", "Name", "Description", "Price");
+            PrintTableHeader(true, "Id", "CategoryId", "Name", "Description", "Price", "Stock", "Date d'expiration");
             foreach (Product aProduct in listProduct)
             {
-                PrintLineCells(true, $"{aProduct.Id}", $"{aProduct.CategoryId}", aProduct.Name, aProduct.Description, $"{aProduct.Price}");
+                StocksRepository stocksRepository = new StocksRepository();
+                var stockOfProduct = stocksRepository.GetStockByProductId(aProduct.Id);
+                var dateTime = stocksRepository.ConvertTimeStampToStringDate(stockOfProduct.Expiry);
+
+                PrintLineCells(true, $"{aProduct.Id}", $"{aProduct.CategoryId}", aProduct.Name, aProduct.Description, $"{aProduct.Price}", $"{stockOfProduct.Quantity}", dateTime);
             }
             Echo(PrintLine());
         }
