@@ -4,6 +4,7 @@ using MyCoffee.Entities;
 using System.Data.SqlClient;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace MyCoffee.Data
 {
@@ -56,7 +57,6 @@ namespace MyCoffee.Data
 
             if (match.Success)
             {
-                var listProduct = productsRepository.getLastProduct();
                 int day = Convert.ToInt32(match.Groups[1].Value);
                 int month = Convert.ToInt32(match.Groups[2].Value);
                 int year = Convert.ToInt32(match.Groups[3].Value);

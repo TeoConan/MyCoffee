@@ -61,7 +61,7 @@ namespace MyCoffee.Controllers
                     break;
 
                 case "4":
-                    //SortShortDates();
+                    new SearchShortDates();
                     break;
 
                 case "5":
