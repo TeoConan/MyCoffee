@@ -53,11 +53,19 @@ namespace MyCoffee.Controllers
 
             while (!entryValidated)
             {
-                command = AskCommand("Veuillez rentrer la date limite de consommation (ex: 11/02/2021) : ");
+                command = AskCommand("[q]uitter pour revenir au menu" + 
+                    "\nVeuillez rentrer la date limite de consommation (ex: 11/02/2021):" + 
+                    "\n");
+                
                 Regex regex = new Regex(@"([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$", RegexOptions.IgnorePatternWhitespace);
                 Match match = regex.Match(command);
 
-                if (!match.Success)
+                if (command == "q")
+                {
+                    Clear();
+                    MainMenu mainMenu = new MainMenu();
+                }
+                else if(!match.Success)
                 {
                     Echo("\nLa date n'est pas valide");
                 }
